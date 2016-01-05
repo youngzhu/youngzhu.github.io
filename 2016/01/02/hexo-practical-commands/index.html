@@ -51,7 +51,7 @@
 
 
 
-<meta name="description" content="新建博文hexo new 文章标题
+<meta name="description" content="新建文章hexo new 文章标题
 或者
 hexo n 文章标题
 生成静态文件hexo generate
@@ -66,12 +66,12 @@ hexo s
 hexo d
 或者
 hexo d -g # g=generate，发布之前生成静态文件
-删除博文123rm source/_posts">
+前提是，在配置文件 _config.yml 里">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo常用命令">
 <meta property="og:url" content="http://youngzy.com/2016/01/02/hexo-practical-commands/index.html">
 <meta property="og:site_name" content="Young Zhu">
-<meta property="og:description" content="新建博文hexo new 文章标题
+<meta property="og:description" content="新建文章hexo new 文章标题
 或者
 hexo n 文章标题
 生成静态文件hexo generate
@@ -86,11 +86,11 @@ hexo s
 hexo d
 或者
 hexo d -g # g=generate，发布之前生成静态文件
-删除博文123rm source/_posts">
-<meta property="og:updated_time" content="2016-01-04T15:42:51.000Z">
+前提是，在配置文件 _config.yml 里">
+<meta property="og:updated_time" content="2016-01-05T12:16:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo常用命令">
-<meta name="twitter:description" content="新建博文hexo new 文章标题
+<meta name="twitter:description" content="新建文章hexo new 文章标题
 或者
 hexo n 文章标题
 生成静态文件hexo generate
@@ -105,7 +105,7 @@ hexo s
 hexo d
 或者
 hexo d -g # g=generate，发布之前生成静态文件
-删除博文123rm source/_posts">
+前提是，在配置文件 _config.yml 里">
 
 
 
@@ -312,7 +312,7 @@ hexo d -g # g=generate，发布之前生成静态文件
       
 
       
-        <span itemprop="articleBody"><h1 id="u65B0_u5EFA_u535A_u6587"><a href="#u65B0_u5EFA_u535A_u6587" class="headerlink" title="新建博文"></a>新建博文</h1><pre><code>hexo new 文章标题
+        <span itemprop="articleBody"><h1 id="u65B0_u5EFA_u6587_u7AE0"><a href="#u65B0_u5EFA_u6587_u7AE0" class="headerlink" title="新建文章"></a>新建文章</h1><pre><code>hexo new 文章标题
 或者
 hexo n 文章标题
 </code></pre><h1 id="u751F_u6210_u9759_u6001_u6587_u4EF6"><a href="#u751F_u6210_u9759_u6001_u6587_u4EF6" class="headerlink" title="生成静态文件"></a>生成静态文件</h1><pre><code>hexo generate
@@ -327,9 +327,10 @@ hexo s
 hexo d
 或者
 hexo d -g # g=generate，发布之前生成静态文件
-</code></pre><h1 id="u5220_u9664_u535A_u6587"><a href="#u5220_u9664_u535A_u6587" class="headerlink" title="删除博文"></a>删除博文</h1><pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm <span class="built_in">source</span>/_posts/xx.md <span class="comment"># 删除MD文件</span></span><br><span class="line">hexo clean <span class="comment"># 清理</span></span><br><span class="line">hexo g <span class="comment"># g = generate 重新生成</span></span><br></pre></td></tr></table></figure>
+</code></pre><p>前提是，在配置文件 <strong>_config.yml</strong> 里已经配置了 <em>deploy</em> 节点。</p>
+<h1 id="u5220_u9664_u6587_u7AE0"><a href="#u5220_u9664_u6587_u7AE0" class="headerlink" title="删除文章"></a>删除文章</h1><pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm <span class="built_in">source</span>/_posts/xx.md <span class="comment"># 删除MD文件</span></span><br><span class="line">hexo clean <span class="comment"># 清理</span></span><br><span class="line">hexo g <span class="comment"># g = generate 重新生成</span></span><br></pre></td></tr></table></figure>
 </code></pre><blockquote>
-<p>注：<br>hexo命令，后面的一个单词基本都可以简写成第一个字母。前提是同一个字母下，只能有一个命令。跟VIM有点像。<br>举个反例：<br><code>hexo clean</code> 不能简化成 <code>hexo c</code>，因为<code>c</code>开头的有两个命令<code>hexo clean</code> 和<code>hexo config</code> 。<br>这时候多敲一个字母就可以了，<code>hexo cl</code> 。</p>
+<p>注：<br>hexo命令，后面的一个单词基本都可以简写成第一个字母。前提是同一个字母下，只能有一个命令。<br>举个反例：<br><code>hexo clean</code> 不能简化成 <code>hexo c</code>，因为<code>c</code>开头的有两个命令<code>hexo clean</code> 和<code>hexo config</code> 。<br>这时候多敲一个字母就可以了，<code>hexo cl</code> 。</p>
 </blockquote>
 <p>更多更详细的命令请参考<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo文档</a> 。</p>
 </span>
@@ -491,7 +492,7 @@ hexo d -g # g=generate，发布之前生成静态文件
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u65B0_u5EFA_u535A_u6587"><span class="nav-number">1.</span> <span class="nav-text">新建博文</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u751F_u6210_u9759_u6001_u6587_u4EF6"><span class="nav-number">2.</span> <span class="nav-text">生成静态文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u9884_u89C8"><span class="nav-number">3.</span> <span class="nav-text">预览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u53D1_u5E03"><span class="nav-number">4.</span> <span class="nav-text">发布</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5220_u9664_u535A_u6587"><span class="nav-number">5.</span> <span class="nav-text">删除博文</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u65B0_u5EFA_u6587_u7AE0"><span class="nav-number">1.</span> <span class="nav-text">新建文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u751F_u6210_u9759_u6001_u6587_u4EF6"><span class="nav-number">2.</span> <span class="nav-text">生成静态文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u9884_u89C8"><span class="nav-number">3.</span> <span class="nav-text">预览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u53D1_u5E03"><span class="nav-number">4.</span> <span class="nav-text">发布</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5220_u9664_u6587_u7AE0"><span class="nav-number">5.</span> <span class="nav-text">删除文章</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
