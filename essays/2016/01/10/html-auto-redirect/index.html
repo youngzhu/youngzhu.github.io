@@ -61,7 +61,7 @@
 <meta property="og:description" content="关于页面的自动跳转，以前知道有JavaScript的方法，直接设置window.location 或者在setTimeout 函数里进行设置。
 现在自己的博客里要用到，就想看看有没有更“漂亮”的写法。Google了一下，还真有。简单。只要在HTML文件的&amp;lt;head&amp;gt;里添加以下这行代码：
 &amp;lt;meta http-equiv=&amp;quot;refresh&amp;quot; content=&amp;q">
-<meta property="og:updated_time" content="2016-01-11T12:45:32.000Z">
+<meta property="og:updated_time" content="2016-01-11T12:58:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTML自动跳转">
 <meta name="twitter:description" content="关于页面的自动跳转，以前知道有JavaScript的方法，直接设置window.location 或者在setTimeout 函数里进行设置。
@@ -276,13 +276,15 @@
         <span itemprop="articleBody"><p>关于页面的自动跳转，以前知道有JavaScript的方法，直接设置<code>window.location</code> 或者在<code>setTimeout</code> 函数里进行设置。</p>
 <p>现在自己的博客里要用到，就想看看有没有更“漂亮”的写法。<br>Google了一下，还真有。<br>简单。<br>只要在HTML文件的<code>&lt;head&gt;</code>里添加以下这行代码：</p>
 <pre><code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=your-url”&gt;
-</code></pre><blockquote>
-<p>参数说明：</p>
+</code></pre><p>参数说明：</p>
 <ul>
-<li>http-equiv : 指定动作。这里固定为 <strong>refresh</strong></li>
-<li>content<br>1.<strong>;前面的数字 </strong>: 设定跳转的时间，单位 <strong>秒</strong>。<br>我不需要等待，所以设为0<br>2.<strong>url</strong> : 即想要跳转的URL</li>
+<li>http-equiv : 指定动作。这里固定为 <strong>refresh</strong>  </li>
+<li>content <ul>
+<li><strong>;前面的数字 </strong>: 设定跳转的时间，单位 <strong>秒</strong>。<br>  我不需要等待，所以设为0</li>
+<li><strong>url</strong> : 即想要跳转的URL</li>
 </ul>
-</blockquote>
+</li>
+</ul>
 </span>
       
     </div>
