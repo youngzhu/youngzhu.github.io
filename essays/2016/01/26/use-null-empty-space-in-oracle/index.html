@@ -56,9 +56,10 @@ null和’’（空字符串）是一个意思
 注：为了便于区分空字符串和空格，下面的示例均以 _ 代表空格
 
 举个例子：
-1234567--建表create table tbl_a (col_a varchar2(1), col_b int);  --  造数据insert in">
+```        –建表        create table tbl_a (col_a varchar2(1), col_b int);  
+--">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Oracle中的NULL、’’（空字符串）以及’_’（空格）">
+<meta property="og:title" content="Oracle中的NULL、’’（空字符串）以及’\_’（空格）">
 <meta property="og:url" content="http://youngzy.com/essays/2016/01/26/use-null-empty-space-in-oracle/index.html">
 <meta property="og:site_name" content="Young Zhu">
 <meta property="og:description" content="在Oracle中使用 null，&amp;#39;&amp;#39;（空字符串），&amp;#39;_&amp;#39;（空格）时，有没有遇到问题？产生疑惑？
@@ -66,16 +67,18 @@ null和’’（空字符串）是一个意思
 注：为了便于区分空字符串和空格，下面的示例均以 _ 代表空格
 
 举个例子：
-1234567--建表create table tbl_a (col_a varchar2(1), col_b int);  --  造数据insert in">
-<meta property="og:updated_time" content="2016-02-04T14:06:02.000Z">
+```        –建表        create table tbl_a (col_a varchar2(1), col_b int);  
+--">
+<meta property="og:updated_time" content="2016-02-05T14:18:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Oracle中的NULL、’’（空字符串）以及’_’（空格）">
+<meta name="twitter:title" content="Oracle中的NULL、’’（空字符串）以及’\_’（空格）">
 <meta name="twitter:description" content="在Oracle中使用 null，&amp;#39;&amp;#39;（空字符串），&amp;#39;_&amp;#39;（空格）时，有没有遇到问题？产生疑惑？
 null和’’（空字符串）是一个意思
 注：为了便于区分空字符串和空格，下面的示例均以 _ 代表空格
 
 举个例子：
-1234567--建表create table tbl_a (col_a varchar2(1), col_b int);  --  造数据insert in">
+```        –建表        create table tbl_a (col_a varchar2(1), col_b int);  
+--">
 
 
 
@@ -87,7 +90,7 @@ null和’’（空字符串）是一个意思
   };
 </script>
 
-  <title> Oracle中的NULL、’’（空字符串）以及’_’（空格） | Young Zhu </title>
+  <title> Oracle中的NULL、’’（空字符串）以及’\_’（空格） | Young Zhu </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -227,7 +230,7 @@ null和’’（空字符串）是一个意思
             
             
               
-                Oracle中的NULL、’’（空字符串）以及’_’（空格）
+                Oracle中的NULL、’’（空字符串）以及’\_’（空格）
               
             
           </h1>
@@ -287,14 +290,20 @@ null和’’（空字符串）是一个意思
 <p>注：<br>为了便于区分空字符串和空格，下面的示例均以 _ 代表空格</p>
 </blockquote>
 <p>举个例子：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--建表</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">table</span> tbl_a (col_a varchar2(<span class="number">1</span>), col_b <span class="built_in">int</span>);</span>  </span><br><span class="line"></span><br><span class="line"><span class="comment">--  造数据</span></span><br><span class="line"><span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_a <span class="keyword">values</span>(‘_’, <span class="number">1</span>);</span> <span class="comment">--  插入空格</span></span><br><span class="line"><span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_a <span class="keyword">values</span>(‘’, <span class="number">2</span>);</span> <span class="comment">--  插入空字符串</span></span><br><span class="line"><span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_a <span class="keyword">values</span>(<span class="literal">null</span>, <span class="number">3</span>);</span> <span class="comment">--  插入NULL</span></span><br></pre></td></tr></table></figure>
+<p>```<br>        –建表<br>        create table tbl_a (col_a varchar2(1), col_b int);  </p>
+<pre><code>--  造数据
+insert into tbl_a values(‘_’, 1); --  插入空格
+insert into tbl_a values(‘’, 2); --  插入空字符串
+insert into tbl_a values(null, 3); --  插入NULL
+</code></pre><p>```</p>
 <p>以上SQL执行成功后，执行 <code>select</code> 来检查：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> tbl_a;</span> <span class="comment">-- 结果是 3 </span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> tbl_a <span class="keyword">where</span> col_a = ‘_’;</span>  <span class="comment">-- 结果是 1 </span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> tbl_a <span class="keyword">where</span> col_a = ‘’;</span>  <span class="comment">-- 结果是 0 </span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> tbl_a <span class="keyword">where</span> col_a <span class="keyword">is</span> <span class="literal">null</span>;</span> <span class="comment">-- 结果是 2</span></span><br></pre></td></tr></table></figure>
+<p>```sql<br>  select count(*) from tbl_a; – 结果是 3<br>  select count(*) from tbl_a where col_a = ‘_’;  – 结果是 1<br>  select count(*) from tbl_a where col_a = ‘’;  – 结果是 0<br>  select count(*) from tbl_a where col_a is null; – 结果是 2 </p>
+<p>```</p>
 <blockquote>
 <p>注意：<br>由于 ‘’ （空串）默认被转换成了 <code>NULL</code>，不能使用 <code>= ‘’</code> 作为查询条件。也不能用 <code>is ‘’</code>。虽然不会有语法错误，但是不会有结果集返回。<br>只能用 <code>is null</code> 。<br>不等于就是 <code>is not null</code> 。</p>
 </blockquote>
 <p>进一步验证：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> nvl(col_a, ‘a’) <span class="keyword">from</span> tbl_a;</span></span><br></pre></td></tr></table></figure>
+<p>``` sql<br>    select nvl(col_a, ‘a’) from tbl_a;<br>```</p>
 <p>结果：</p>
 <table>
 <thead>
@@ -322,9 +331,9 @@ null和’’（空字符串）是一个意思
 <hr>
 <h2 id="u5206_u6790_u51FD_u6570_u4E0ENULL"><a href="#u5206_u6790_u51FD_u6570_u4E0ENULL" class="headerlink" title="分析函数与NULL"></a>分析函数与NULL</h2><p>在使用AVG，MAX，SUM，COUNT等函数时，为NULL的纪录会被忽略。</p>
 <p>再插入几条数据：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_a <span class="keyword">values</span>(<span class="literal">null</span>, <span class="literal">null</span>);</span> <span class="comment">--  插入NULL</span></span><br><span class="line"><span class="comment">-- 执行成功。</span></span><br><span class="line"><span class="comment">-- 再次证明，’’ 被当作了null处理.</span></span><br><span class="line"><span class="comment">-- 因为该字段是 int 类型，如果是字符串，执行会报错</span></span><br><span class="line"><span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_a <span class="keyword">values</span>(‘a’, ‘’);</span></span><br></pre></td></tr></table></figure>
+<p>``` sql<br>insert into tbl_a values(null, null); –  插入NULL<br>– 执行成功。<br>– 再次证明，’’ 被当作了null处理.<br>– 因为该字段是 int 类型，如果是字符串，执行会报错<br>insert into tbl_a values(‘a’, ‘’);<br>```</p>
 <p>查看数据：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> tbl_a;</span></span><br></pre></td></tr></table></figure>
+<p>```sql<br>select * from tbl_a;<br>```</p>
 <p>结果如下：</p>
 <table>
 <thead>
@@ -359,8 +368,8 @@ null和’’（空字符串）是一个意思
 <p>_ 代表空格<br>其余空白处表示 NULL </p>
 </blockquote>
 <p>验证：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">AVG</span>(col_b) <span class="keyword">from</span> tbl_a;</span> <span class="comment">-- 结果为 2 ，NULL的纪录行忽略掉了</span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">MAX</span>(col_b) <span class="keyword">from</span> tbl_a;</span> <span class="comment">-- 结果为 3</span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">SUM</span>(col_b) <span class="keyword">from</span> tbl_a;</span> <span class="comment">-- 结果为 6</span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">COUNT</span>(col_b) <span class="keyword">from</span> tbl_a;</span> <span class="comment">-- 结果为 3 </span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">COUNT</span>(*) <span class="keyword">from</span> tbl_a;</span> <span class="comment">-- 结果为 5 </span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">COUNT</span>(col_a) <span class="keyword">from</span> tbl_a;</span> <span class="comment">-- 结果为 5</span></span><br></pre></td></tr></table></figure>
-<h2 id="u6392_u5E8F_u65F6_uFF0CNULL_u4F5C_u4E3A_u65E0_u7A77_u5927_u5904_u7406_u3002"><a href="#u6392_u5E8F_u65F6_uFF0CNULL_u4F5C_u4E3A_u65E0_u7A77_u5927_u5904_u7406_u3002" class="headerlink" title="排序时，NULL作为无穷大处理。"></a>排序时，NULL作为无穷大处理。</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> tbl_a <span class="keyword">order</span> <span class="keyword">by</span> col_b <span class="keyword">desc</span> ;</span></span><br></pre></td></tr></table></figure>
+<p>```sql<br>select AVG(col_b) from tbl_a; – 结果为 2 ，NULL的纪录行忽略掉了<br>select MAX(col_b) from tbl_a; – 结果为 3<br>select SUM(col_b) from tbl_a; – 结果为 6<br>select COUNT(col_b) from tbl_a; – 结果为 3<br>select COUNT(col_a) from tbl_a; – 结果为 2<br>select COUNT(*) from tbl_a; – 结果为 5<br>```</p>
+<h2 id="u6392_u5E8F_u65F6_uFF0CNULL_u4F5C_u4E3A_u65E0_u7A77_u5927_u5904_u7406_u3002"><a href="#u6392_u5E8F_u65F6_uFF0CNULL_u4F5C_u4E3A_u65E0_u7A77_u5927_u5904_u7406_u3002" class="headerlink" title="排序时，NULL作为无穷大处理。"></a>排序时，NULL作为无穷大处理。</h2><p>```sql<br>select * from tbl_a order by col_b desc ;<br>```</p>
 <p>结果如下：</p>
 <table>
 <thead>
@@ -613,7 +622,7 @@ null和’’（空字符串）是一个意思
     <script type="text/javascript">
       var disqus_shortname = 'youngzy';
       var disqus_identifier = '2016/01/26/use-null-empty-space-in-oracle/';
-      var disqus_title = 'Oracle中的NULL、’’（空字符串）以及’_’（空格）';
+      var disqus_title = 'Oracle中的NULL、’’（空字符串）以及’\_’（空格）';
       var disqus_url = 'http://youngzy.com/essays/2016/01/26/use-null-empty-space-in-oracle/';
 
       function run_disqus_script(disqus_script){
