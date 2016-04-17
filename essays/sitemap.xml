@@ -2,23 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://youngzy.com/essays/2016/02/15/build-blog-with-github-and-hexo/</loc>
+    <loc>http://youngzy.com/essays/2016/04/17/touching-scenes-of-the-descendants-of-sun/</loc>
     
-    <lastmod>2016-02-20T07:21:11.000Z</lastmod>
+    <lastmod>2016-04-17T15:53:41.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://youngzy.com/essays/2016/02/20/the-dilemma-of-the-surveyor/</loc>
     
-    <lastmod>2016-02-20T06:06:28.000Z</lastmod>
+    <lastmod>2016-02-20T13:41:32.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://youngzy.com/essays/about/index.html</loc>
     
-    <lastmod>2016-02-20T01:51:25.000Z</lastmod>
+    <lastmod>2016-02-20T09:49:27.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://youngzy.com/essays/2016/02/15/build-blog-with-github-and-hexo/</loc>
+    
+    <lastmod>2016-02-20T07:21:11.000Z</lastmod>
     
   </url>
   
