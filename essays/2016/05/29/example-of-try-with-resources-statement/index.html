@@ -35,7 +35,7 @@
 <link href="/essays/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Java," />
 
 
 
@@ -51,25 +51,28 @@
 
 
 
-<meta name="description" content="在汽车工业发展的早期，亨利·福特去做市场调查，他问马车夫们有什么需求，马车夫们会跟他描述“噢，福特先生，我觉得如果有一个四个轮子的，烧汽油的，还有一个方向盘的就好了……”吗？我想这一幕不会出现，马车夫们会说——我需要更快的马！
-via 《构建之法》
-
-这个故事在很多地方看到过了。当我看到 烧汽油 的时候忽然想到：在不知道石油的用处时，它是不是就是废物？如果很久很久之前，人们没有发现石油的用处，现在">
+<meta name="description" content="习惯了这样的try：
+123456try&amp;#123;&amp;#125; catch (Exception e)&amp;#123;&amp;#125;
+看到了这样的try，觉得有点神奇。
+12345try(...)&amp;#123;&amp;#125; catch (Exception e) &amp;#123;&amp;#125;
+原来这还有个专业术语， try-with-resources statement ，它会自动关闭括号内的资源（res">
 <meta property="og:type" content="article">
-<meta property="og:title" content="能源会枯竭吗？">
-<meta property="og:url" content="http://youngzy.com/essays/2016/01/02/will-energy-be-exhausted/index.html">
+<meta property="og:title" content="Java | 原来 try 还可以这样用啊？！">
+<meta property="og:url" content="http://youngzy.com/essays/2016/05/29/example-of-try-with-resources-statement/index.html">
 <meta property="og:site_name" content="Young Zhu">
-<meta property="og:description" content="在汽车工业发展的早期，亨利·福特去做市场调查，他问马车夫们有什么需求，马车夫们会跟他描述“噢，福特先生，我觉得如果有一个四个轮子的，烧汽油的，还有一个方向盘的就好了……”吗？我想这一幕不会出现，马车夫们会说——我需要更快的马！
-via 《构建之法》
-
-这个故事在很多地方看到过了。当我看到 烧汽油 的时候忽然想到：在不知道石油的用处时，它是不是就是废物？如果很久很久之前，人们没有发现石油的用处，现在">
-<meta property="og:updated_time" content="2016-01-02T06:30:39.000Z">
+<meta property="og:description" content="习惯了这样的try：
+123456try&amp;#123;&amp;#125; catch (Exception e)&amp;#123;&amp;#125;
+看到了这样的try，觉得有点神奇。
+12345try(...)&amp;#123;&amp;#125; catch (Exception e) &amp;#123;&amp;#125;
+原来这还有个专业术语， try-with-resources statement ，它会自动关闭括号内的资源（res">
+<meta property="og:updated_time" content="2016-05-29T14:18:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="能源会枯竭吗？">
-<meta name="twitter:description" content="在汽车工业发展的早期，亨利·福特去做市场调查，他问马车夫们有什么需求，马车夫们会跟他描述“噢，福特先生，我觉得如果有一个四个轮子的，烧汽油的，还有一个方向盘的就好了……”吗？我想这一幕不会出现，马车夫们会说——我需要更快的马！
-via 《构建之法》
-
-这个故事在很多地方看到过了。当我看到 烧汽油 的时候忽然想到：在不知道石油的用处时，它是不是就是废物？如果很久很久之前，人们没有发现石油的用处，现在">
+<meta name="twitter:title" content="Java | 原来 try 还可以这样用啊？！">
+<meta name="twitter:description" content="习惯了这样的try：
+123456try&amp;#123;&amp;#125; catch (Exception e)&amp;#123;&amp;#125;
+看到了这样的try，觉得有点神奇。
+12345try(...)&amp;#123;&amp;#125; catch (Exception e) &amp;#123;&amp;#125;
+原来这还有个专业术语， try-with-resources statement ，它会自动关闭括号内的资源（res">
 
 
 
@@ -81,7 +84,7 @@ via 《构建之法》
   };
 </script>
 
-  <title> 能源会枯竭吗？ | Young Zhu </title>
+  <title> Java | 原来 try 还可以这样用啊？！ | Young Zhu </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -230,7 +233,7 @@ via 《构建之法》
             
             
               
-                能源会枯竭吗？
+                Java | 原来 try 还可以这样用啊？！
               
             
           </h1>
@@ -239,8 +242,8 @@ via 《构建之法》
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-01-02T14:24:11+08:00" content="2016-01-02">
-              2016-01-02
+            <time itemprop="dateCreated" datetime="2016-05-29T21:53:04+08:00" content="2016-05-29">
+              2016-05-29
             </time>
           </span>
 
@@ -249,8 +252,8 @@ via 《构建之法》
               &nbsp; | &nbsp; 分类于
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/essays/categories/读书笔记/" itemprop="url" rel="index">
-                    <span itemprop="name">读书笔记</span>
+                  <a href="/essays/categories/TECH/" itemprop="url" rel="index">
+                    <span itemprop="name">TECH</span>
                   </a>
                 </span>
 
@@ -265,8 +268,8 @@ via 《构建之法》
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/essays/2016/01/02/will-energy-be-exhausted/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/01/02/will-energy-be-exhausted/" itemprop="commentsCount"></span>
+              <a href="/essays/2016/05/29/example-of-try-with-resources-statement/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/05/29/example-of-try-with-resources-statement/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -285,34 +288,41 @@ via 《构建之法》
       
 
       
-        <span itemprop="articleBody"><blockquote>
-<p>在汽车工业发展的早期，亨利·福特去做市场调查，他问马车夫们有什么需求，马车夫们会跟他描述“噢，福特先生，我觉得如果有一个四个轮子的，烧汽油的，还有一个方向盘的就好了……”吗？我想这一幕不会出现，马车夫们会说——我需要更快的马！</p>
-<p>via 《构建之法》</p>
-</blockquote>
-<p>这个故事在很多地方看到过了。<br>当我看到 <strong>烧汽油</strong> 的时候忽然想到：在不知道石油的用处时，它是不是就是废物？如果很久很久之前，人们没有发现石油的用处，现在根本就不会有石油匮乏这一说。</p>
-<p>能源会枯竭吗？<br>个人觉得：某类能源会。但不至于到无能源可用的地步。这个用完了还有那个。</p>
-<p>我的路是不是走歪了？<br>看一本软件工程的书，怎么想到能源上去了？</p>
+        <span itemprop="articleBody"><p>习惯了这样的try：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e)</span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看到了这样的try，觉得有点神奇。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>(...)</span><br><span class="line">&#123;</span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) </span><br><span class="line">&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>原来这还有个专业术语， <strong>try-with-resources statement</strong> ，它会自动关闭括号内的资源（resources），不用手动添加代码 <code>xx.close();</code>了。</p>
+<p>看个小例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> org.young.elearn;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * try-with-resources 的使用</span><br><span class="line"> * try(resouces)</span><br><span class="line"> * &#123;</span><br><span class="line"> * </span><br><span class="line"> * &#125; catch (Exception e)&#123;&#125;</span><br><span class="line"> * </span><br><span class="line"> * 这里的resource会自动关闭</span><br><span class="line"> * </span><br><span class="line"> * 1. resource 必须继承自 java.lang.AutoCloseable</span><br><span class="line"> * 2. 定义和赋值必须都在try里完成</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@author</span> by Young.ZHU</span><br><span class="line"> *      on 2016年5月29日</span><br><span class="line"> *</span><br><span class="line"> * Package&amp;FileName: org.young.elearn.TryWithResourcesTest</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TryWithResourcesTest</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 验证一下资源是不是真的关闭了</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="annotation">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">try</span> (MyResources mr = <span class="keyword">new</span> MyResources()) &#123;</span><br><span class="line"><span class="comment">//			mr.doSomething(4);</span></span><br><span class="line">			mr.doSomething(<span class="number">9</span>);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			System.out.println(e.getMessage());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 编译错误：</span><br><span class="line">	 * The resource f of a try-with-resources statement cannot be assigned</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="annotation">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> (FileOutputStream f = <span class="keyword">null</span>;) &#123;</span><br><span class="line"><span class="comment">//			f = new FileOutputStream(new File(""));</span></span><br><span class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span><br><span class="line">	 * 编译错误：</span><br><span class="line">	 * The resource type File does not implement java.lang.AutoCloseable</span><br><span class="line">	 */</span></span><br><span class="line">	<span class="annotation">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">/*try (File file = new File("d:\\xx.txt");) &#123;</span><br><span class="line">			</span><br><span class="line">		&#125; */</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyResources</span> <span class="keyword">implements</span> <span class="title">AutoCloseable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"resources are closed."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">(<span class="keyword">int</span> num)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (num % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">"it's OK."</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Enter an even."</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以后使用 InputStream，OutputStream 之类的就方便一点了，具体可参考另一个例子：<a href="https://github.com/youngzhu/CollectionCode4Java/blob/master/src/org/young/elearn/str/io/ObjectSerialize.java" target="_blank" rel="external">GitHub</a></p>
 </span>
       
     </div>
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/essays/tags/Java/" rel="tag">#Java</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/essays/2016/01/01/first-post/" rel="next" title="开篇">
-                <i class="fa fa-chevron-left"></i> 开篇
+              <a href="/essays/2016/04/17/touching-scenes-of-the-descendants-of-sun/" rel="next" title="《太阳的后裔》动人的N个瞬间">
+                <i class="fa fa-chevron-left"></i> 《太阳的后裔》动人的N个瞬间
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/essays/2016/01/02/hexo-practical-commands/" rel="prev" title="Hexo常用命令">
-                Hexo常用命令 <i class="fa fa-chevron-right"></i>
+              <a href="/essays/2016/05/29/why-use-serial-version-uid/" rel="prev" title="Java | 原来 serialVersionUID 的用处在这里">
+                Java | 原来 serialVersionUID 的用处在这里 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -509,9 +519,9 @@ via 《构建之法》
 
     <script type="text/javascript">
       var disqus_shortname = 'youngzy';
-      var disqus_identifier = '2016/01/02/will-energy-be-exhausted/';
-      var disqus_title = '能源会枯竭吗？';
-      var disqus_url = 'http://youngzy.com/essays/2016/01/02/will-energy-be-exhausted/';
+      var disqus_identifier = '2016/05/29/example-of-try-with-resources-statement/';
+      var disqus_title = 'Java | 原来 try 还可以这样用啊？！';
+      var disqus_url = 'http://youngzy.com/essays/2016/05/29/example-of-try-with-resources-statement/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
