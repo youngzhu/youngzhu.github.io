@@ -65,7 +65,7 @@
 看个例子。
 有这样一个对象 User 
 123456789101112131415class User implements Serializable &amp;#123;	String username;">
-<meta property="og:updated_time" content="2016-05-29T14:54:10.000Z">
+<meta property="og:updated_time" content="2016-05-29T14:56:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java | 原来 serialVersionUID 的用处在这里">
 <meta name="twitter:description" content="一直不太明白Java对象里 serialVersionUID 字段是做什么用的。有或者没有，它们之间有差别吗？除了Eclipse里提示的那个黄色的警告。
@@ -307,7 +307,7 @@
 <font color="red"><code>java.io.InvalidClassException: org.young.elearn.io.User; local class incompatible: stream classdesc serialVersionUID = 7967476135812239100, local class serialVersionUID = 905986497687499238</code></font>
 
 
-<p><code>serialVersionUID</code> 的问题！！！<br>文件里存储的User对象的 <strong>serialVersionUID</strong> 跟当前的User对象（User.class）的 <strong>serialVersionUID</strong> 不一致。因为如果一个Java对象没有指定 <strong>serialVersionUID</strong> ，那么系统（JVM）动态地指定一个。</p>
+<p><strong>serialVersionUID</strong> 的问题！！！<br>文件里存储的User对象的 <strong>serialVersionUID</strong> 跟当前的User对象（User.class）的 <strong>serialVersionUID</strong> 不一致。因为如果一个Java对象没有指定 <strong>serialVersionUID</strong> ，那么系统（JVM）动态地指定一个。</p>
 <p>为了解决这个问题，只要在定义User对象时指定 <strong>serialVersionUID</strong> 就可以了，即：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">7967476135812239100L</span>;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// same code as before</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>详细的代码可参考：<a href="https://github.com/youngzhu/CollectionCode4Java/blob/master/test/org/young/elearn/io/ObjectSerializeTest.java" target="_blank" rel="external">GitHub</a></p>
@@ -335,6 +335,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/essays/2016/07/17/how-did-i-get-a-book-via-itunes-gift-card/" rel="prev" title="想要看个原版（正版）英文书怎么就这么难呢？">
+                想要看个原版（正版）英文书怎么就这么难呢？ <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -406,7 +410,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/essays/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -420,7 +424,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/essays/tags">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
