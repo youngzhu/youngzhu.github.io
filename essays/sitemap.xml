@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://youngzy.com/essays/2016/08/06/hey-man-what-can-we-do-if-you/</loc>
+    
+    <lastmod>2016-08-06T03:13:25.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://youngzy.com/essays/2016/07/17/how-did-i-get-a-book-via-itunes-gift-card/</loc>
+    
+    <lastmod>2016-08-06T02:28:18.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://youngzy.com/essays/2016/07/27/eclipse-issue-cannot-open-git-upload-pack/</loc>
     
     <lastmod>2016-07-27T15:06:49.000Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://youngzy.com/essays/2016/07/24/hibernate-issue-how-to-use-string-type-sequence-in-hibernate4/</loc>
     
     <lastmod>2016-07-24T03:40:10.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://youngzy.com/essays/2016/07/17/how-did-i-get-a-book-via-itunes-gift-card/</loc>
-    
-    <lastmod>2016-07-17T08:25:16.000Z</lastmod>
     
   </url>
   
