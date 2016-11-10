@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://youngzy.com/essays/2016/09/10/amazing-algorithm-01-recursion/</loc>
+    <loc>http://youngzy.com/essays/2016/11/10/spring-issue-unexpected-rollback-exception/</loc>
     
-    <lastmod>2016-09-10T08:54:16.000Z</lastmod>
+    <lastmod>2016-11-10T15:24:01.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://youngzy.com/essays/2016/09/10/what-i-am-thinking-while-taking-a-taxi/</loc>
     
-    <lastmod>2016-09-10T08:11:13.000Z</lastmod>
+    <lastmod>2016-09-10T08:56:55.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://youngzy.com/essays/2016/09/10/amazing-algorithm-01-recursion/</loc>
+    
+    <lastmod>2016-09-10T08:54:16.000Z</lastmod>
     
   </url>
   
