@@ -35,7 +35,7 @@
 <link href="/essays/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="algorithm," />
+  <meta name="keywords" content="HTML,javascript," />
 
 
 
@@ -51,28 +51,28 @@
 
 
 
-<meta name="description" content="作为程序员不知道你有没有过跟我一样的感觉：有些算法的设计真精妙，真神奇！
-举个例子，比如递归。
-先考虑这样的一个程序题：将 1 到 10 依次累加。你会怎么处理？
-最容易想到的办法可能就是循环了。
-12345// simple loop constructvar acc = 0;for (var i = 1; i &amp;lt;= 10; ++i)    acc += i;alert(acc); //">
+<meta name="description" content="需求想实现这样一个功能：打开一个静态HTML页面A，让它自动跳转到页面B。
+实现怎么实现呢？
+习惯了JSP之类的传参（Request、Session等），忽然想用静态的HTML页面，不知道怎么用了。
+比较容易想到的就是通过URL传参，A.html?ref-url=B.html 。怎样才能取到这个ref-url的值呢？字符串……split？会不会太low？应该有更简洁的办法吧。
+网上搜了搜（见文末参">
 <meta property="og:type" content="article">
-<meta property="og:title" content="神奇的递归">
-<meta property="og:url" content="http://youngzy.com/essays/2016/09/10/amazing-algorithm-01-recursion/index.html">
+<meta property="og:title" content="HTML静态页面如何传递／获取参数？（已解决）">
+<meta property="og:url" content="http://youngzy.com/essays/2016/12/11/how-to-get-param-in-static-html-page/index.html">
 <meta property="og:site_name" content="Young Zhu">
-<meta property="og:description" content="作为程序员不知道你有没有过跟我一样的感觉：有些算法的设计真精妙，真神奇！
-举个例子，比如递归。
-先考虑这样的一个程序题：将 1 到 10 依次累加。你会怎么处理？
-最容易想到的办法可能就是循环了。
-12345// simple loop constructvar acc = 0;for (var i = 1; i &amp;lt;= 10; ++i)    acc += i;alert(acc); //">
-<meta property="og:updated_time" content="2016-09-10T08:54:16.000Z">
+<meta property="og:description" content="需求想实现这样一个功能：打开一个静态HTML页面A，让它自动跳转到页面B。
+实现怎么实现呢？
+习惯了JSP之类的传参（Request、Session等），忽然想用静态的HTML页面，不知道怎么用了。
+比较容易想到的就是通过URL传参，A.html?ref-url=B.html 。怎样才能取到这个ref-url的值呢？字符串……split？会不会太low？应该有更简洁的办法吧。
+网上搜了搜（见文末参">
+<meta property="og:updated_time" content="2016-12-11T04:14:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="神奇的递归">
-<meta name="twitter:description" content="作为程序员不知道你有没有过跟我一样的感觉：有些算法的设计真精妙，真神奇！
-举个例子，比如递归。
-先考虑这样的一个程序题：将 1 到 10 依次累加。你会怎么处理？
-最容易想到的办法可能就是循环了。
-12345// simple loop constructvar acc = 0;for (var i = 1; i &amp;lt;= 10; ++i)    acc += i;alert(acc); //">
+<meta name="twitter:title" content="HTML静态页面如何传递／获取参数？（已解决）">
+<meta name="twitter:description" content="需求想实现这样一个功能：打开一个静态HTML页面A，让它自动跳转到页面B。
+实现怎么实现呢？
+习惯了JSP之类的传参（Request、Session等），忽然想用静态的HTML页面，不知道怎么用了。
+比较容易想到的就是通过URL传参，A.html?ref-url=B.html 。怎样才能取到这个ref-url的值呢？字符串……split？会不会太low？应该有更简洁的办法吧。
+网上搜了搜（见文末参">
 
 
 
@@ -84,7 +84,7 @@
   };
 </script>
 
-  <title> 神奇的递归 | Young Zhu </title>
+  <title> HTML静态页面如何传递／获取参数？（已解决） | Young Zhu </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -233,7 +233,7 @@
             
             
               
-                神奇的递归
+                HTML静态页面如何传递／获取参数？（已解决）
               
             
           </h1>
@@ -242,8 +242,8 @@
         <div class="post-meta">
           <span class="post-time">
             发表于
-            <time itemprop="dateCreated" datetime="2016-09-10T16:16:25+08:00" content="2016-09-10">
-              2016-09-10
+            <time itemprop="dateCreated" datetime="2016-12-11T11:11:51+08:00" content="2016-12-11">
+              2016-12-11
             </time>
           </span>
 
@@ -268,8 +268,8 @@
             
               <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/essays/2016/09/10/amazing-algorithm-01-recursion/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/09/10/amazing-algorithm-01-recursion/" itemprop="commentsCount"></span>
+              <a href="/essays/2016/12/11/how-to-get-param-in-static-html-page/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/11/how-to-get-param-in-static-html-page/" itemprop="commentsCount"></span>
               </a>
             </span>
             
@@ -288,17 +288,33 @@
       
 
       
-        <span itemprop="articleBody"><p>作为程序员不知道你有没有过跟我一样的感觉：有些算法的设计真精妙，真神奇！</p>
-<p>举个例子，比如递归。</p>
-<p>先考虑这样的一个程序题：将 1 到 10 依次累加。<br>你会怎么处理？</p>
-<p>最容易想到的办法可能就是循环了。</p>
-<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// simple loop construct</span><br><span class="line"><span class="keyword">var</span> acc = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; ++i)</span><br><span class="line">    acc += i;</span><br><span class="line">alert(acc); // <span class="literal">result</span> <span class="keyword">is</span> <span class="number">55</span></span><br></pre></td></tr></table></figure>
-<p>但如果不用循环呢？<br>还能怎么实现？</p>
-<p>看看下面这块代码：</p>
-<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// <span class="keyword">without</span> loop construct <span class="keyword">or</span> variables (recursion)</span><br><span class="line">function sumRange(start, <span class="keyword">end</span>, acc) &#123;</span><br><span class="line">    <span class="keyword">if</span> (start &gt; <span class="keyword">end</span>)</span><br><span class="line">        <span class="keyword">return</span> acc;</span><br><span class="line">    <span class="keyword">return</span> sumRange(start + <span class="number">1</span>, <span class="keyword">end</span>, acc + start)</span><br><span class="line">&#125;</span><br><span class="line">alert(sumRange(<span class="number">1</span>, <span class="number">10</span>, <span class="number">0</span>)); // <span class="literal">result</span> <span class="keyword">is</span> also <span class="number">55</span></span><br></pre></td></tr></table></figure>
-<p>这就是递归了。是不是很神奇？！</p>
-<p>作为一个老程序员，写代码或看代码的时候，时不时的会有这样的时候：靠，代码还可以这么写啊，真妙！</p>
-<p>via <a href="https://medium.com/@cscalfani/so-you-want-to-be-a-functional-programmer-part-1-1f15e387e536?source=linkShare-d1adcd6b754f-1473496939" target="_blank" rel="external">Mdeium</a></p>
+        <span itemprop="articleBody"><h2 id="u9700_u6C42"><a href="#u9700_u6C42" class="headerlink" title="需求"></a>需求</h2><p>想实现这样一个功能：打开一个静态HTML页面<strong>A</strong>，让它自动跳转到页面<strong>B</strong>。</p>
+<h2 id="u5B9E_u73B0"><a href="#u5B9E_u73B0" class="headerlink" title="实现"></a>实现</h2><p>怎么实现呢？</p>
+<p>习惯了JSP之类的传参（Request、Session等），忽然想用静态的HTML页面，不知道怎么用了。</p>
+<p>比较容易想到的就是通过URL传参，<code>A.html?ref-url=B.html</code> 。<br>怎样才能取到这个<code>ref-url</code>的值呢？<br>字符串……split？<br>会不会太low？<br>应该有更简洁的办法吧。</p>
+<p>网上搜了搜（见文末参考部分），有主意了。<br>还是通过URL，但不是用split，而是用正则表达式。</p>
+<h2 id="u793A_u4F8B"><a href="#u793A_u4F8B" class="headerlink" title="示例"></a>示例</h2><p>A.html的内容</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">title</span>&gt;</span>Young Zhu<span class="tag">&lt;/<span class="title">title</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">        	<span class="function"><span class="keyword">function</span> <span class="title">getURL</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        		<span class="comment">// 注意这里的 search ，会返回URL里?后面的字符串，包括?本身</span></span><br><span class="line">        		<span class="keyword">var</span> queryStr = <span class="built_in">window</span>.document.location.search;</span><br><span class="line">        		<span class="comment">//alert(queryStr);</span></span><br><span class="line">        		<span class="keyword">var</span> url = (queryStr.match(<span class="regexp">/(=)[^&amp;]*/g</span>))[<span class="number">0</span>].substr(<span class="number">1</span>);</span><br><span class="line">        		<span class="comment">//alert(url);</span></span><br><span class="line">        		<span class="keyword">return</span> url;</span><br><span class="line">        	&#125;</span><br><span class="line">        </span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">body</span>&gt;</span></span><br><span class="line">    	<span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span>&gt;</span><span class="javascript"></span><br><span class="line">    		<span class="built_in">window</span>.location.href=getURL();</span><br><span class="line">    	</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="title">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>用浏览器打开 A.html，在地址栏现有的内容后面加上以下内容：<code>?ref-url=B.html</code> 。<br>注意：</p>
+<ol>
+<li>本例中参数名不重要，因为正则表达式是要取<strong>=</strong>后面的内容。</li>
+<li>为了方便，只写了<em>B.html</em>，测试时请换成真实路径，或者换成其他的网址，例如某DU。</li>
+</ol>
+<h2 id="u77E5_u8BC6_u70B9"><a href="#u77E5_u8BC6_u70B9" class="headerlink" title="知识点"></a>知识点</h2><ol>
+<li><p>获取URL后面的传参字符串</p>
+<pre><code>window.document.location.search
+</code></pre><p> 原来还专门有这样的一个属性 <strong>search</strong>，而不用自己去解析。</p>
+</li>
+<li><p>正则表达式</p>
+</li>
+<li>页面重定向<pre><code>window.location.href=new-url;
+</code></pre></li>
+</ol>
+<hr>
+<p>参考</p>
+<ul>
+<li>js获取url参数值<a href="http://youngzy.com//ref.html?ref-url=http://www.cnblogs.com/jiekk/archive/2011/06/28/2092444.html">(http://youngzy.com//ref-js-html)</a></li>
+</ul>
 </span>
       
     </div>
@@ -307,7 +323,9 @@
       
         <div class="post-tags">
           
-            <a href="/essays/tags/algorithm/" rel="tag">#algorithm</a>
+            <a href="/essays/tags/HTML/" rel="tag">#HTML</a>
+          
+            <a href="/essays/tags/javascript/" rel="tag">#javascript</a>
           
         </div>
       
@@ -316,17 +334,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/essays/2016/09/10/what-i-am-thinking-while-taking-a-taxi/" rel="next" title="打车打得我心颤">
-                <i class="fa fa-chevron-left"></i> 打车打得我心颤
+              <a href="/essays/2016/11/27/multi-thread-and-thread-safe/" rel="next" title="多线程与线程安全（实例讲解）">
+                <i class="fa fa-chevron-left"></i> 多线程与线程安全（实例讲解）
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/essays/2016/11/10/spring-issue-unexpected-rollback-exception/" rel="prev" title="Spring | UnexpectedRollbackException 异常（已解决）">
-                Spring | UnexpectedRollbackException 异常（已解决） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -462,7 +476,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#u9700_u6C42"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B9E_u73B0"><span class="nav-number">2.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u793A_u4F8B"><span class="nav-number">3.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u77E5_u8BC6_u70B9"><span class="nav-number">4.</span> <span class="nav-text">知识点</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
@@ -522,9 +536,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'youngzy';
-      var disqus_identifier = '2016/09/10/amazing-algorithm-01-recursion/';
-      var disqus_title = '神奇的递归';
-      var disqus_url = 'http://youngzy.com/essays/2016/09/10/amazing-algorithm-01-recursion/';
+      var disqus_identifier = '2016/12/11/how-to-get-param-in-static-html-page/';
+      var disqus_title = 'HTML静态页面如何传递／获取参数？（已解决）';
+      var disqus_url = 'http://youngzy.com/essays/2016/12/11/how-to-get-param-in-static-html-page/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
