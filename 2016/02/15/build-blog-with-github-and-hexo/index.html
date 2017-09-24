@@ -1,0 +1,819 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/essays/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/essays/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/essays/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo," />
+
+
+
+
+
+  <link rel="alternate" href="/essays/atom.xml" title="Young Zhu" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/essays/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="Github 的使用注册Github注册地址：https://github.com/
+安装Github客户端略
+配置Github略
+创建Github Pages
+打开Github网站，在页面的右上角（头像旁边）有个＋，点击，然后选择“New repository”。
+填写Repository name Github Pages的Repository的名称格式是固定的：username.github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简明教程 | 从0到1搭建个人博客：Github + Hexo">
+<meta property="og:url" content="http://youngzy.com/essays/2016/02/15/build-blog-with-github-and-hexo/index.html">
+<meta property="og:site_name" content="Young Zhu">
+<meta property="og:description" content="Github 的使用注册Github注册地址：https://github.com/
+安装Github客户端略
+配置Github略
+创建Github Pages
+打开Github网站，在页面的右上角（头像旁边）有个＋，点击，然后选择“New repository”。
+填写Repository name Github Pages的Repository的名称格式是固定的：username.github">
+<meta property="og:image" content="http://7xqxq2.com1.z0.glb.clouddn.com/20160215%2Fdnspod.png">
+<meta property="og:updated_time" content="2016-02-20T07:21:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简明教程 | 从0到1搭建个人博客：Github + Hexo">
+<meta name="twitter:description" content="Github 的使用注册Github注册地址：https://github.com/
+安装Github客户端略
+配置Github略
+创建Github Pages
+打开Github网站，在页面的右上角（头像旁边）有个＋，点击，然后选择“New repository”。
+填写Repository name Github Pages的Repository的名称格式是固定的：username.github">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> 简明教程 | 从0到1搭建个人博客：Github + Hexo | Young Zhu </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-73835672-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/essays/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Young Zhu</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Be All You Can Be !</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/essays/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/essays/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/essays/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/essays/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                简明教程 | 从0到1搭建个人博客：Github + Hexo
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-02-15T20:06:08+08:00" content="2016-02-15">
+              2016-02-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/essays/categories/TECH/" itemprop="url" rel="index">
+                    <span itemprop="name">TECH</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/essays/2016/02/15/build-blog-with-github-and-hexo/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/02/15/build-blog-with-github-and-hexo/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="Github__u7684_u4F7F_u7528"><a href="#Github__u7684_u4F7F_u7528" class="headerlink" title="Github 的使用"></a>Github 的使用</h1><h2 id="u6CE8_u518CGithub"><a href="#u6CE8_u518CGithub" class="headerlink" title="注册Github"></a>注册Github</h2><p>注册地址：<a href="https://github.com/" target="_blank" rel="external">https://github.com/</a></p>
+<h2 id="u5B89_u88C5Github_u5BA2_u6237_u7AEF"><a href="#u5B89_u88C5Github_u5BA2_u6237_u7AEF" class="headerlink" title="安装Github客户端"></a>安装Github客户端</h2><p>略</p>
+<h2 id="u914D_u7F6EGithub"><a href="#u914D_u7F6EGithub" class="headerlink" title="配置Github"></a>配置Github</h2><p>略</p>
+<h2 id="u521B_u5EFAGithub_Pages"><a href="#u521B_u5EFAGithub_Pages" class="headerlink" title="创建Github Pages"></a>创建Github Pages</h2><ol>
+<li>打开<a href="https://github.com/" target="_blank" rel="external">Github网站</a>，在页面的右上角（头像旁边）有个＋，点击，然后选择“New repository”。</li>
+<li><p>填写Repository name<br> Github Pages的Repository的名称格式是固定的：username.github.io。</p>
+<p> 例如我的Github用户名是 youngzhu ,那么我的 Github Pages的Repository name就是 youngzhu.github.io ，即：<a href="https://github.com/youngzhu/youngzhu.github.io" target="_blank" rel="external">https://github.com/youngzhu/youngzhu.github.io</a></p>
+</li>
+<li><p>点击下方的“Create repository”，完成创建。</p>
+</li>
+</ol>
+<h1 id="u8D2D_u4E70_u57DF_u540D"><a href="#u8D2D_u4E70_u57DF_u540D" class="headerlink" title="购买域名"></a>购买域名</h1><p>购买地址：<a href="https://www.godaddy.com" target="_blank" rel="external">GoDaddy</a> ，支持支付宝支付。</p>
+<blockquote>
+<p>2016-01-26 收到GoDaddy发来的邮件，说是支持中文了。15年底注册的时候还是英文。</p>
+</blockquote>
+<p>不要问我为什么。大家（Google／知乎）都说好。</p>
+<p>当然，如果你要选择其他的也可以。</p>
+<p>介绍两个优惠码网址：</p>
+<ol>
+<li><a href="http://www.gdcodecoupon.com/" target="_blank" rel="external">http://www.gdcodecoupon.com/</a></li>
+<li><a href="http://www.dute.me/" target="_blank" rel="external">http://www.dute.me/</a></li>
+</ol>
+<blockquote>
+<p>使用优惠码时，要注意： </p>
+<ol>
+<li><p>优惠不了多少钱</p>
+<p>大概1刀。别看网站上很多5折／7折，很多不能用。</p>
+</li>
+<li>使用优惠码会影响到支付方式<br>找啊找，找到一个优惠码居然可以省8刀！！！开心！！！<br>可在支付的时候遇到了问题：我的VISA卡信息填了一遍又一遍，总是不对（它提示有问题，却又不说具体问题是什么……）。<br>终于在它的帮助页找到了原因：原来这个优惠需要美区的信用卡……</li>
+</ol>
+</blockquote>
+<h1 id="u8BBE_u7F6EDNS"><a href="#u8BBE_u7F6EDNS" class="headerlink" title="设置DNS"></a>设置DNS</h1><p>使用DNSPod。</p>
+<ol>
+<li>注册<br> 访问<a href="https://www.dnspod.cn" target="_blank" rel="external">https://www.dnspod.cn</a></li>
+<li><p>添加域名<br> 注册成功后，在左边的导航栏找到“域名解析”，点击，在网页右边区域会出现一个“添加域名”的按钮，点击，输入你要解析的域名，就是你刚过在GoDaddy上购买的域名。</p>
+<p> 我的就是：youngzy.com </p>
+</li>
+<li><p>添加解析记录</p>
+<p> 点进去之后，会发现已经有两个默认的记录了，不用管它。</p>
+<ul>
+<li><p>添加两条记录类型为 A 的记录<br>  记录值（记录指向的IP）是由Github提供：</p>
+<ul>
+<li>192.30.252.153</li>
+<li><p>192.30.252.154</p>
+<p>可至 <a href="https://help.github.com/articles/tips-for-configuring-an-a-record-with-your-dns-provider/" target="_blank" rel="external">GitHub Help</a>查找最新的IP。</p>
+</li>
+</ul>
+</li>
+<li><p>添加一条记录类型为 CNAME 的记录</p>
+<ul>
+<li>主机记录：www</li>
+<li>记录类型：CNAME</li>
+<li>记录值：Github Pages 的 Repository name</li>
+<li>其他值：都用默认的就行</li>
+</ul>
+<p>如图：</p>
+<p><img src="http://7xqxq2.com1.z0.glb.clouddn.com/20160215%2Fdnspod.png" alt=""></p>
+</li>
+</ul>
+</li>
+<li><p>修改域名DNS地址</p>
+<p> GoDaddy的可参考：<a href="https://support.dnspod.cn/Kb/showarticle/?qtype=%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B&amp;tsid=42" target="_blank" rel="external">DNSPod的帮助页</a>。</p>
+<p> 其它的请参考：<a href="https://support.dnspod.cn/Kb/showarticle/tsid/177/#ChangeDomainNS" target="_blank" rel="external">学会使用DNSPod，仅需三步</a> 中的第二步。</p>
+</li>
+</ol>
+<h1 id="Hexo_u7684_u4F7F_u7528"><a href="#Hexo_u7684_u4F7F_u7528" class="headerlink" title="Hexo的使用"></a>Hexo的使用</h1><p>关于Hexo的安装／部署／使用，官方有更详细的说明。详见文末 <strong>相关链接</strong> 部分。</p>
+<h2 id="u5C06_u57DF_u540D_u4E0EGithub_Pages_u7ED1_u5B9A"><a href="#u5C06_u57DF_u540D_u4E0EGithub_Pages_u7ED1_u5B9A" class="headerlink" title="将域名与Github Pages绑定"></a>将域名与Github Pages绑定</h2><p>用 $HEXO_HOME 表示Hexo的源目录，即执行 <code>hexo init</code> 的目录。</p>
+<ol>
+<li>在 $HEXO_HOME/source 目录下新建一个文件，文件名为 <strong>CNAME</strong> 。</li>
+<li>编辑该文件，文件内容为你的域名。<br> 例如我的文件内容为：youngzy.com<br> 仅此而已，没有多余的内容。</li>
+</ol>
+<p>就这样，域名和Github Pages通过CNAME绑定了。</p>
+<h2 id="u53D1_u5E03"><a href="#u53D1_u5E03" class="headerlink" title="发布"></a>发布</h2><p>通过Hexo的命令，将博客发布到Github上。</p>
+<pre><code>hexo d -g
+</code></pre><p>至此，博客搭建完成。<br>可以在地址栏中输入你的域名看看效果。Hexo默认会生成一篇文章（博客）。</p>
+<h1 id="u611F_u8C22"><a href="#u611F_u8C22" class="headerlink" title="感谢"></a>感谢</h1><p><a href="https://xuanwo.org/about/" target="_blank" rel="external">Xuanwo</a></p>
+<h1 id="u76F8_u5173_u94FE_u63A5"><a href="#u76F8_u5173_u94FE_u63A5" class="headerlink" title="相关链接"></a>相关链接</h1><ul>
+<li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo官方文档</a></li>
+<li><a href="http://theme-next.iissnan.com" target="_blank" rel="external">NexT主题使用说明</a></li>
+<li><a href="http://www.jianshu.com/p/05289a4bc8b2#" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li>
+<li><a href="http://zipperary.com/2013/05/27/domain-name-and-dns/" target="_blank" rel="external">购买域名、设置DNS</a></li>
+<li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">hexo你的博客</a></li>
+</ul>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/essays/tags/Hexo/" rel="tag">#Hexo</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/essays/2016/01/26/use-null-empty-space-in-oracle/" rel="next" title="Oracle中的NULL、’’（空字符串）以及’_’（空格）">
+                <i class="fa fa-chevron-left"></i> Oracle中的NULL、’’（空字符串）以及’_’（空格）
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/essays/2016/02/20/the-dilemma-of-the-surveyor/" rel="prev" title="智力题 | 测量员的困境">
+                智力题 | 测量员的困境 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="http://s.gravatar.com/avatar/1a90471b5cb2d6406d371cb7aa46c901?s=80" alt="youngzy" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">youngzy</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Be All You Can Be !</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/essays/archives">
+              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/essays/categories">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/essays/tags">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/essays/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/youngzhu/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/memory4young/" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> CNBlogs
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Github__u7684_u4F7F_u7528"><span class="nav-number">1.</span> <span class="nav-text">Github 的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u6CE8_u518CGithub"><span class="nav-number">1.1.</span> <span class="nav-text">注册Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5B89_u88C5Github_u5BA2_u6237_u7AEF"><span class="nav-number">1.2.</span> <span class="nav-text">安装Github客户端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u914D_u7F6EGithub"><span class="nav-number">1.3.</span> <span class="nav-text">配置Github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u521B_u5EFAGithub_Pages"><span class="nav-number">1.4.</span> <span class="nav-text">创建Github Pages</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u8D2D_u4E70_u57DF_u540D"><span class="nav-number">2.</span> <span class="nav-text">购买域名</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u8BBE_u7F6EDNS"><span class="nav-number">3.</span> <span class="nav-text">设置DNS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hexo_u7684_u4F7F_u7528"><span class="nav-number">4.</span> <span class="nav-text">Hexo的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5C06_u57DF_u540D_u4E0EGithub_Pages_u7ED1_u5B9A"><span class="nav-number">4.1.</span> <span class="nav-text">将域名与Github Pages绑定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u53D1_u5E03"><span class="nav-number">4.2.</span> <span class="nav-text">发布</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u611F_u8C22"><span class="nav-number">5.</span> <span class="nav-text">感谢</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u76F8_u5173_u94FE_u63A5"><span class="nav-number">6.</span> <span class="nav-text">相关链接</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">youngzy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/essays/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'youngzy';
+      var disqus_identifier = '2016/02/15/build-blog-with-github-and-hexo/';
+      var disqus_title = '简明教程 | 从0到1搭建个人博客：Github + Hexo';
+      var disqus_url = 'http://youngzy.com/essays/2016/02/15/build-blog-with-github-and-hexo/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/essays/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/essays/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/essays/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/essays/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/essays/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/essays/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/essays/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/essays/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/essays/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/essays/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>
