@@ -408,5 +408,186 @@
       <comments>http://youngzy.com/essays/2016/04/17/touching-scenes-of-the-descendants-of-sun/#disqus_thread</comments>
     </item>
     
+    <item>
+      <title>智力题 | 测量员的困境</title>
+      <link>http://youngzy.com/essays/2016/02/20/the-dilemma-of-the-surveyor/</link>
+      <guid>http://youngzy.com/essays/2016/02/20/the-dilemma-of-the-surveyor/</guid>
+      <pubDate>Sat, 20 Feb 2016 03:24:52 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;有个地方住着三个地主。为了方便记忆，就称他们为张三、李四、王五。张三有3个儿子，李四有4个儿子，王五有5个儿子。&lt;br&gt;当地有个传统，需要把财产分割成完全一样地分给自己的继承人。&lt;br&gt;张三的地产是正三角形的。按照传统，他让测量员把这块地分割成形状和面积完全相同的三块。&lt;b
+        
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>有个地方住着三个地主。为了方便记忆，就称他们为张三、李四、王五。张三有3个儿子，李四有4个儿子，王五有5个儿子。<br>当地有个传统，需要把财产分割成完全一样地分给自己的继承人。<br>张三的地产是正三角形的。按照传统，他让测量员把这块地分割成形状和面积完全相同的三块。<br>测量员做到了。如下图：<br><img src="http://7xqxq2.com1.z0.glb.clouddn.com/201602%2FIQ01.png" alt="正三角形的地" title="正三角形的地"></p><p>李四有4个儿子，他的地产是L形的（缺一个角的正方形），面积是正方形的四分之三。<br>测量员费了好大力气，终于把这块地分成了4块，每块的形状和面积完全相同。如图：<br><img src="http://7xqxq2.com1.z0.glb.clouddn.com/201602%2FIQ02.png" alt="L形的地" title="L形的地"></p><p>王五有5个儿子，地产是标准的正方形。他要求测量员把地分成完全相同的5块。<br>测量员发现这个问题极其困难。<br>你能帮助这个测量员吗？<br><img src="http://7xqxq2.com1.z0.glb.clouddn.com/201602%2FIQ03.png" alt="正方形的地" title="正方形的地"></p><p><strong>via 《推理的迷宫》</strong></p>]]></content:encoded>
+      
+      <comments>http://youngzy.com/essays/2016/02/20/the-dilemma-of-the-surveyor/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>简明教程 | 从0到1搭建个人博客：Github + Hexo</title>
+      <link>http://youngzy.com/essays/2016/02/15/build-blog-with-github-and-hexo/</link>
+      <guid>http://youngzy.com/essays/2016/02/15/build-blog-with-github-and-hexo/</guid>
+      <pubDate>Mon, 15 Feb 2016 12:06:08 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;h1 id=&quot;Github__u7684_u4F7F_u7528&quot;&gt;&lt;a href=&quot;#Github__u7684_u4F7F_u7528&quot; class=&quot;headerlink&quot; title=&quot;Github 的使用&quot;&gt;&lt;/a&gt;Github 的使用&lt;/h1&gt;&lt;h2 id=&quot;u6C
+        
+      
+      </description>
+      
+      <content:encoded><![CDATA[<h1 id="Github__u7684_u4F7F_u7528"><a href="#Github__u7684_u4F7F_u7528" class="headerlink" title="Github 的使用"></a>Github 的使用</h1><h2 id="u6CE8_u518CGithub"><a href="#u6CE8_u518CGithub" class="headerlink" title="注册Github"></a>注册Github</h2><p>注册地址：<a href="https://github.com/" target="_blank" rel="external">https://github.com/</a></p><h2 id="u5B89_u88C5Github_u5BA2_u6237_u7AEF"><a href="#u5B89_u88C5Github_u5BA2_u6237_u7AEF" class="headerlink" title="安装Github客户端"></a>安装Github客户端</h2><p>略</p><h2 id="u914D_u7F6EGithub"><a href="#u914D_u7F6EGithub" class="headerlink" title="配置Github"></a>配置Github</h2><p>略</p><h2 id="u521B_u5EFAGithub_Pages"><a href="#u521B_u5EFAGithub_Pages" class="headerlink" title="创建Github Pages"></a>创建Github Pages</h2><ol><li>打开<a href="https://github.com/" target="_blank" rel="external">Github网站</a>，在页面的右上角（头像旁边）有个＋，点击，然后选择“New repository”。</li><li><p>填写Repository name<br> Github Pages的Repository的名称格式是固定的：username.github.io。</p><p> 例如我的Github用户名是 youngzhu ,那么我的 Github Pages的Repository name就是 youngzhu.github.io ，即：<a href="https://github.com/youngzhu/youngzhu.github.io" target="_blank" rel="external">https://github.com/youngzhu/youngzhu.github.io</a></p></li><li><p>点击下方的“Create repository”，完成创建。</p></li></ol><h1 id="u8D2D_u4E70_u57DF_u540D"><a href="#u8D2D_u4E70_u57DF_u540D" class="headerlink" title="购买域名"></a>购买域名</h1><p>购买地址：<a href="https://www.godaddy.com" target="_blank" rel="external">GoDaddy</a> ，支持支付宝支付。</p><blockquote><p>2016-01-26 收到GoDaddy发来的邮件，说是支持中文了。15年底注册的时候还是英文。</p></blockquote><p>不要问我为什么。大家（Google／知乎）都说好。</p><p>当然，如果你要选择其他的也可以。</p><p>介绍两个优惠码网址：</p><ol><li><a href="http://www.gdcodecoupon.com/" target="_blank" rel="external">http://www.gdcodecoupon.com/</a></li><li><a href="http://www.dute.me/" target="_blank" rel="external">http://www.dute.me/</a></li></ol><blockquote><p>使用优惠码时，要注意： </p><ol><li><p>优惠不了多少钱</p><p>大概1刀。别看网站上很多5折／7折，很多不能用。</p></li><li>使用优惠码会影响到支付方式<br>找啊找，找到一个优惠码居然可以省8刀！！！开心！！！<br>可在支付的时候遇到了问题：我的VISA卡信息填了一遍又一遍，总是不对（它提示有问题，却又不说具体问题是什么……）。<br>终于在它的帮助页找到了原因：原来这个优惠需要美区的信用卡……</li></ol></blockquote><h1 id="u8BBE_u7F6EDNS"><a href="#u8BBE_u7F6EDNS" class="headerlink" title="设置DNS"></a>设置DNS</h1><p>使用DNSPod。</p><ol><li>注册<br> 访问<a href="https://www.dnspod.cn" target="_blank" rel="external">https://www.dnspod.cn</a></li><li><p>添加域名<br> 注册成功后，在左边的导航栏找到“域名解析”，点击，在网页右边区域会出现一个“添加域名”的按钮，点击，输入你要解析的域名，就是你刚过在GoDaddy上购买的域名。</p><p> 我的就是：youngzy.com </p></li><li><p>添加解析记录</p><p> 点进去之后，会发现已经有两个默认的记录了，不用管它。</p><ul><li><p>添加两条记录类型为 A 的记录<br>  记录值（记录指向的IP）是由Github提供：</p><ul><li>192.30.252.153</li><li><p>192.30.252.154</p><p>可至 <a href="https://help.github.com/articles/tips-for-configuring-an-a-record-with-your-dns-provider/" target="_blank" rel="external">GitHub Help</a>查找最新的IP。</p></li></ul></li><li><p>添加一条记录类型为 CNAME 的记录</p><ul><li>主机记录：www</li><li>记录类型：CNAME</li><li>记录值：Github Pages 的 Repository name</li><li>其他值：都用默认的就行</li></ul><p>如图：</p><p><img src="http://7xqxq2.com1.z0.glb.clouddn.com/20160215%2Fdnspod.png" alt=""></p></li></ul></li><li><p>修改域名DNS地址</p><p> GoDaddy的可参考：<a href="https://support.dnspod.cn/Kb/showarticle/?qtype=%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B&amp;tsid=42" target="_blank" rel="external">DNSPod的帮助页</a>。</p><p> 其它的请参考：<a href="https://support.dnspod.cn/Kb/showarticle/tsid/177/#ChangeDomainNS" target="_blank" rel="external">学会使用DNSPod，仅需三步</a> 中的第二步。</p></li></ol><h1 id="Hexo_u7684_u4F7F_u7528"><a href="#Hexo_u7684_u4F7F_u7528" class="headerlink" title="Hexo的使用"></a>Hexo的使用</h1><p>关于Hexo的安装／部署／使用，官方有更详细的说明。详见文末 <strong>相关链接</strong> 部分。</p><h2 id="u5C06_u57DF_u540D_u4E0EGithub_Pages_u7ED1_u5B9A"><a href="#u5C06_u57DF_u540D_u4E0EGithub_Pages_u7ED1_u5B9A" class="headerlink" title="将域名与Github Pages绑定"></a>将域名与Github Pages绑定</h2><p>用 $HEXO_HOME 表示Hexo的源目录，即执行 <code>hexo init</code> 的目录。</p><ol><li>在 $HEXO_HOME/source 目录下新建一个文件，文件名为 <strong>CNAME</strong> 。</li><li>编辑该文件，文件内容为你的域名。<br> 例如我的文件内容为：youngzy.com<br> 仅此而已，没有多余的内容。</li></ol><p>就这样，域名和Github Pages通过CNAME绑定了。</p><h2 id="u53D1_u5E03"><a href="#u53D1_u5E03" class="headerlink" title="发布"></a>发布</h2><p>通过Hexo的命令，将博客发布到Github上。</p><pre><code>hexo d -g</code></pre><p>至此，博客搭建完成。<br>可以在地址栏中输入你的域名看看效果。Hexo默认会生成一篇文章（博客）。</p><h1 id="u611F_u8C22"><a href="#u611F_u8C22" class="headerlink" title="感谢"></a>感谢</h1><p><a href="https://xuanwo.org/about/" target="_blank" rel="external">Xuanwo</a></p><h1 id="u76F8_u5173_u94FE_u63A5"><a href="#u76F8_u5173_u94FE_u63A5" class="headerlink" title="相关链接"></a>相关链接</h1><ul><li><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo官方文档</a></li><li><a href="http://theme-next.iissnan.com" target="_blank" rel="external">NexT主题使用说明</a></li><li><a href="http://www.jianshu.com/p/05289a4bc8b2#" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a></li><li><a href="http://zipperary.com/2013/05/27/domain-name-and-dns/" target="_blank" rel="external">购买域名、设置DNS</a></li><li><a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">hexo你的博客</a></li></ul>]]></content:encoded>
+      
+      <comments>http://youngzy.com/essays/2016/02/15/build-blog-with-github-and-hexo/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Oracle中的NULL、’’（空字符串）以及’_’（空格）</title>
+      <link>http://youngzy.com/essays/2016/01/26/use-null-empty-space-in-oracle/</link>
+      <guid>http://youngzy.com/essays/2016/01/26/use-null-empty-space-in-oracle/</guid>
+      <pubDate>Tue, 26 Jan 2016 13:06:37 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;在Oracle中使用 &lt;code&gt;null&lt;/code&gt;，&lt;code&gt;&amp;#39;&amp;#39;&lt;/code&gt;（空字符串），&lt;code&gt;&amp;#39;_&amp;#39;&lt;/code&gt;（空格）时，有没有遇到问题？产生疑惑？&lt;/p&gt;
+&lt;h2 id=&quot;null_u548C_u2019_u2019
+        
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>在Oracle中使用 <code>null</code>，<code>&#39;&#39;</code>（空字符串），<code>&#39;_&#39;</code>（空格）时，有没有遇到问题？产生疑惑？</p><h2 id="null_u548C_u2019_u2019_uFF08_u7A7A_u5B57_u7B26_u4E32_uFF09_u662F_u4E00_u4E2A_u610F_u601D"><a href="#null_u548C_u2019_u2019_uFF08_u7A7A_u5B57_u7B26_u4E32_uFF09_u662F_u4E00_u4E2A_u610F_u601D" class="headerlink" title="null和’’（空字符串）是一个意思"></a><code>null</code>和<code>’’</code>（空字符串）是一个意思</h2><blockquote><p>注：<br>为了便于区分空字符串和空格，下面的示例均以 _ 代表空格</p></blockquote><p>举个例子：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--建表</span></span><br><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">table</span> tbl_a (col_a varchar2(<span class="number">1</span>), col_b <span class="built_in">int</span>);</span>  </span><br><span class="line"></span><br><span class="line"><span class="comment">--  造数据</span></span><br><span class="line"><span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_a <span class="keyword">values</span>(‘_’, <span class="number">1</span>);</span> <span class="comment">--  插入空格</span></span><br><span class="line"><span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_a <span class="keyword">values</span>(‘’, <span class="number">2</span>);</span> <span class="comment">--  插入空字符串</span></span><br><span class="line"><span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_a <span class="keyword">values</span>(<span class="literal">null</span>, <span class="number">3</span>);</span> <span class="comment">--  插入NULL</span></span><br></pre></td></tr></table></figure><p>以上SQL执行成功后，执行 <code>select</code> 来检查：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> tbl_a;</span> <span class="comment">-- 结果是 3 </span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> tbl_a <span class="keyword">where</span> col_a = ‘_’;</span>  <span class="comment">-- 结果是 1 </span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> tbl_a <span class="keyword">where</span> col_a = ‘’;</span>  <span class="comment">-- 结果是 0 </span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> tbl_a <span class="keyword">where</span> col_a <span class="keyword">is</span> <span class="literal">null</span>;</span> <span class="comment">-- 结果是 2</span></span><br></pre></td></tr></table></figure><blockquote><p>注意：<br>由于 ‘’ （空串）默认被转换成了 <code>NULL</code>，不能使用 <code>= ‘’</code> 作为查询条件。也不能用 <code>is ‘’</code>。虽然不会有语法错误，但是不会有结果集返回。<br>只能用 <code>is null</code> 。<br>不等于就是 <code>is not null</code> 。</p></blockquote><p>进一步验证：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> nvl(col_a, ‘a’) <span class="keyword">from</span> tbl_a;</span></span><br></pre></td></tr></table></figure><p>结果：</p><table><thead><tr><th></th><th>NVL(COL_A,’A’)</th></tr></thead><tbody><tr><td>1</td><td></td></tr><tr><td>2</td><td>a</td></tr><tr><td>3</td><td>a</td></tr></tbody></table><p>原来，在Oracle中，<code>null</code>和<code>’’</code>（空字符串）是一个意思。</p><hr><h2 id="u5206_u6790_u51FD_u6570_u4E0ENULL"><a href="#u5206_u6790_u51FD_u6570_u4E0ENULL" class="headerlink" title="分析函数与NULL"></a>分析函数与NULL</h2><p>在使用AVG，MAX，SUM，COUNT等函数时，为NULL的纪录会被忽略。</p><p>再插入几条数据：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_a <span class="keyword">values</span>(<span class="literal">null</span>, <span class="literal">null</span>);</span> <span class="comment">--  插入NULL</span></span><br><span class="line"><span class="comment">-- 执行成功。</span></span><br><span class="line"><span class="comment">-- 再次证明，’’ 被当作了null处理.</span></span><br><span class="line"><span class="comment">-- 因为该字段是 int 类型，如果是字符串，执行会报错</span></span><br><span class="line"><span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> tbl_a <span class="keyword">values</span>(‘a’, ‘’);</span></span><br></pre></td></tr></table></figure><p>查看数据：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> tbl_a;</span></span><br></pre></td></tr></table></figure><p>结果如下：</p><table><thead><tr><th>COL_A</th><th>COL_B</th></tr></thead><tbody><tr><td>_</td><td>1</td></tr><tr><td></td><td>2</td></tr><tr><td></td><td>3</td></tr><tr><td></td><td></td></tr><tr><td>a</td></tr></tbody></table><blockquote><p>_ 代表空格<br>其余空白处表示 NULL </p></blockquote><p>验证：</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">AVG</span>(col_b) <span class="keyword">from</span> tbl_a;</span> <span class="comment">-- 结果为 2 ，NULL的纪录行忽略掉了</span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">MAX</span>(col_b) <span class="keyword">from</span> tbl_a;</span> <span class="comment">-- 结果为 3</span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">SUM</span>(col_b) <span class="keyword">from</span> tbl_a;</span> <span class="comment">-- 结果为 6</span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">COUNT</span>(col_b) <span class="keyword">from</span> tbl_a;</span> <span class="comment">-- 结果为 3 </span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">COUNT</span>(col_a) <span class="keyword">from</span> tbl_a;</span> <span class="comment">-- 结果为 2</span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> <span class="keyword">COUNT</span>(*) <span class="keyword">from</span> tbl_a;</span> <span class="comment">-- 结果为 5</span></span><br></pre></td></tr></table></figure><h2 id="u6392_u5E8F_u65F6_uFF0CNULL_u4F5C_u4E3A_u65E0_u7A77_u5927_u5904_u7406_u3002"><a href="#u6392_u5E8F_u65F6_uFF0CNULL_u4F5C_u4E3A_u65E0_u7A77_u5927_u5904_u7406_u3002" class="headerlink" title="排序时，NULL作为无穷大处理。"></a>排序时，NULL作为无穷大处理。</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> tbl_a <span class="keyword">order</span> <span class="keyword">by</span> col_b <span class="keyword">desc</span> ;</span></span><br></pre></td></tr></table></figure><p>结果如下：</p><table><thead><tr><th>COL_A</th><th>COL_B</th></tr></thead><tbody><tr><td></td><td></td></tr><tr><td>a</td><td></td></tr><tr><td></td><td>3</td></tr><tr><td></td><td>2</td></tr><tr><td>_</td><td>1</td></tr></tbody></table><p>参考：<a href="http://blog.csdn.net/weiwenhp/article/details/7035327" target="_blank" rel="external">http://blog.csdn.net/weiwenhp/article/details/7035327</a></p>]]></content:encoded>
+      
+      <comments>http://youngzy.com/essays/2016/01/26/use-null-empty-space-in-oracle/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>成功男人的背后都有个__的女人</title>
+      <link>http://youngzy.com/essays/2016/01/11/there-is-an-x-woman-behind-a-successful-man/</link>
+      <guid>http://youngzy.com/essays/2016/01/11/there-is-an-x-woman-behind-a-successful-man/</guid>
+      <pubDate>Mon, 11 Jan 2016 13:01:59 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;前几天看《国剧盛典》（电视剧颁奖礼），胡歌（最佳男演员）在说获奖感言的时候，讲了这样一个事情：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我今天还想特别的感谢一个人（前面感谢了主办方、导演、制片等），那个人就是我的妈妈。&lt;br&gt;前几天我的经纪人去我家里看望我妈妈。我妈妈问了她
+        
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>前几天看《国剧盛典》（电视剧颁奖礼），胡歌（最佳男演员）在说获奖感言的时候，讲了这样一个事情：</p><blockquote><p>我今天还想特别的感谢一个人（前面感谢了主办方、导演、制片等），那个人就是我的妈妈。<br>前几天我的经纪人去我家里看望我妈妈。我妈妈问了她一个问题：胡歌拿了那么多奖，这些奖杯都放在哪里？我一个都没有见过。<br>当经纪人把这句话转述给我的时候，我听了非常非常的辛酸。我在收获喜悦的时候没有跟我的妈妈分享。我觉得我错了。这么多年，她不仅是我最忠实的观众，她也给了我很多指引。<br>有两句话，是我这辈子都不会忘记的。<br>第一句话是在我刚入行的时候，她告诉我：<strong>演戏不要看钱多不多，要看剧本好不好</strong>。<br>第二句话，是在06年我跌入人生的低谷的时候（车祸）她跟我说的：<strong>以前观众更在意的是你的外表。现在，上天在你的脸上开了一扇窗是希望观众可以更多地看到你的内在</strong>。</p></blockquote><p>很感动。</p><blockquote><p>每一个成功男人的背后都有一个__的女人。</p></blockquote><p>这句话一般用来形容妻子。</p><p>现在我知道，这句话也可以用来形容母亲。</p>]]></content:encoded>
+      
+      <comments>http://youngzy.com/essays/2016/01/11/there-is-an-x-woman-behind-a-successful-man/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>HTML自动跳转</title>
+      <link>http://youngzy.com/essays/2016/01/10/html-auto-redirect/</link>
+      <guid>http://youngzy.com/essays/2016/01/10/html-auto-redirect/</guid>
+      <pubDate>Sun, 10 Jan 2016 13:30:31 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;关于页面的自动跳转，以前知道有JavaScript的方法，直接设置&lt;code&gt;window.location&lt;/code&gt; 或者在&lt;code&gt;setTimeout&lt;/code&gt; 函数里进行设置。&lt;/p&gt;
+&lt;p&gt;现在自己的博客里要用到，就想看看有没有更“漂亮”的写法。&lt;br&gt;
+        
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>关于页面的自动跳转，以前知道有JavaScript的方法，直接设置<code>window.location</code> 或者在<code>setTimeout</code> 函数里进行设置。</p><p>现在自己的博客里要用到，就想看看有没有更“漂亮”的写法。<br>Google了一下，还真有。<br>简单。<br>只要在HTML文件的<code>&lt;head&gt;</code>里添加以下这行代码：</p><pre><code>&lt;meta http-equiv=&quot;refresh&quot; content=&quot;0;url=your-url”&gt;</code></pre><p>参数说明：</p><ul><li>http-equiv : 指定动作。这里固定为 <strong>refresh</strong>  </li><li>content <ul><li><strong>;前面的数字 </strong>: 设定跳转的时间，单位 <strong>秒</strong>。<br>  我不需要等待，所以设为0</li><li><strong>url</strong> : 即想要跳转的URL</li></ul></li></ul>]]></content:encoded>
+      
+      <comments>http://youngzy.com/essays/2016/01/10/html-auto-redirect/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>“百度推广”是个什么玩意儿？</title>
+      <link>http://youngzy.com/essays/2016/01/09/what-is-the-popularsation-of-baidu/</link>
+      <guid>http://youngzy.com/essays/2016/01/09/what-is-the-popularsation-of-baidu/</guid>
+      <pubDate>Sat, 09 Jan 2016 02:25:00 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;某个周末的早晨，迷迷糊糊中接到了一个电话。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;CALL：“你刚注册了一个域名是吧？需要做百度推广吗？”&lt;br&gt;ME：“你是哪里？”&lt;br&gt;CALL：“我是百度推广。”&lt;br&gt;ME：“谢谢！不用！”&lt;br&gt;然后我就把电话挂了。  &lt;/p&gt;
+        
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>某个周末的早晨，迷迷糊糊中接到了一个电话。</p><blockquote><p>CALL：“你刚注册了一个域名是吧？需要做百度推广吗？”<br>ME：“你是哪里？”<br>CALL：“我是百度推广。”<br>ME：“谢谢！不用！”<br>然后我就把电话挂了。  </p></blockquote><p>刚挂完我就后悔了。<br>倒不是后悔没做那什么“百度推广”。<br>而是后悔怎么没有继续聊一下，了解一下什么是“百度推广”也好啊。可以长长见识。</p><p>现在还得自己Google什么叫“百度推广”。<br>结果，Google里没有，Wiki里也没有，都是他们自己家的。<br>以下内容摘自百度百科：</p><blockquote><p>百度推广是百度国内首创的一种按效果付费的网络推广方式，简单便捷的网页操作即可给企业带来大量潜在客户，有效提升企业知名度及销售额。每天有超过1亿人次在百度查找信息，企业在百度注册与产品相关的关键词后，就会被主动查找这些产品的潜在客户找到。</p></blockquote><h2 id="u53CD_u601D"><a href="#u53CD_u601D" class="headerlink" title="反思"></a>反思</h2><p>接到这种“推销”电话，下意识的心理活动是这样的：</p><ul><li>又被骚扰了。</li><li>信息又不知道从哪个渠道泄漏了。</li><li>不想跟你废话，赶紧挂。</li></ul><p>后来我还特意查了一下，距我注册域名刚好过了一个星期。<br>这“效率”还真高啊！</p>]]></content:encoded>
+      
+      <comments>http://youngzy.com/essays/2016/01/09/what-is-the-popularsation-of-baidu/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>Hexo常用命令</title>
+      <link>http://youngzy.com/essays/2016/01/02/hexo-practical-commands/</link>
+      <guid>http://youngzy.com/essays/2016/01/02/hexo-practical-commands/</guid>
+      <pubDate>Sat, 02 Jan 2016 09:22:18 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;h1 id=&quot;u65B0_u5EFA_u6587_u7AE0&quot;&gt;&lt;a href=&quot;#u65B0_u5EFA_u6587_u7AE0&quot; class=&quot;headerlink&quot; title=&quot;新建文章&quot;&gt;&lt;/a&gt;新建文章&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;hexo new 文章标题
+或者
+        
+      
+      </description>
+      
+      <content:encoded><![CDATA[<h1 id="u65B0_u5EFA_u6587_u7AE0"><a href="#u65B0_u5EFA_u6587_u7AE0" class="headerlink" title="新建文章"></a>新建文章</h1><pre><code>hexo new 文章标题或者hexo n 文章标题</code></pre><h1 id="u751F_u6210_u9759_u6001_u6587_u4EF6"><a href="#u751F_u6210_u9759_u6001_u6587_u4EF6" class="headerlink" title="生成静态文件"></a>生成静态文件</h1><pre><code>hexo generate或者hexo g</code></pre><h1 id="u9884_u89C8"><a href="#u9884_u89C8" class="headerlink" title="预览"></a>预览</h1><pre><code>hexo server或者hexo s</code></pre><p>访问网址： <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p><h1 id="u53D1_u5E03"><a href="#u53D1_u5E03" class="headerlink" title="发布"></a>发布</h1><pre><code>hexo deploy或者hexo d或者hexo d -g # g=generate，发布之前生成静态文件</code></pre><p>前提是，在配置文件 <strong>_config.yml</strong> 里已经配置了 <em>deploy</em> 节点。</p><h1 id="u5220_u9664_u6587_u7AE0"><a href="#u5220_u9664_u6587_u7AE0" class="headerlink" title="删除文章"></a>删除文章</h1><pre><code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm <span class="built_in">source</span>/_posts/xx.md <span class="comment"># 删除MD文件</span></span><br><span class="line">hexo clean <span class="comment"># 清理</span></span><br><span class="line">hexo g <span class="comment"># g = generate 重新生成</span></span><br></pre></td></tr></table></figure></code></pre><blockquote><p>注：<br>hexo命令，后面的一个单词基本都可以简写成第一个字母。前提是同一个字母下，只能有一个命令。<br>举个反例：<br><code>hexo clean</code> 不能简化成 <code>hexo c</code>，因为<code>c</code>开头的有两个命令<code>hexo clean</code> 和<code>hexo config</code> 。<br>这时候多敲一个字母就可以了，<code>hexo cl</code> 。</p></blockquote><p>更多更详细的命令请参考<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">Hexo文档</a> 。</p>]]></content:encoded>
+      
+      <comments>http://youngzy.com/essays/2016/01/02/hexo-practical-commands/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>能源会枯竭吗？</title>
+      <link>http://youngzy.com/essays/2016/01/02/will-energy-be-exhausted/</link>
+      <guid>http://youngzy.com/essays/2016/01/02/will-energy-be-exhausted/</guid>
+      <pubDate>Sat, 02 Jan 2016 06:24:11 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;blockquote&gt;
+&lt;p&gt;在汽车工业发展的早期，亨利·福特去做市场调查，他问马车夫们有什么需求，马车夫们会跟他描述“噢，福特先生，我觉得如果有一个四个轮子的，烧汽油的，还有一个方向盘的就好了……”吗？我想这一幕不会出现，马车夫们会说——我需要更快的马！&lt;/p&gt;
+&lt;p&gt;via
+        
+      
+      </description>
+      
+      <content:encoded><![CDATA[<blockquote><p>在汽车工业发展的早期，亨利·福特去做市场调查，他问马车夫们有什么需求，马车夫们会跟他描述“噢，福特先生，我觉得如果有一个四个轮子的，烧汽油的，还有一个方向盘的就好了……”吗？我想这一幕不会出现，马车夫们会说——我需要更快的马！</p><p>via 《构建之法》</p></blockquote><p>这个故事在很多地方看到过了。<br>当我看到 <strong>烧汽油</strong> 的时候忽然想到：在不知道石油的用处时，它是不是就是废物？如果很久很久之前，人们没有发现石油的用处，现在根本就不会有石油匮乏这一说。</p><p>能源会枯竭吗？<br>个人觉得：某类能源会。但不至于到无能源可用的地步。这个用完了还有那个。</p><p>我的路是不是走歪了？<br>看一本软件工程的书，怎么想到能源上去了？</p>]]></content:encoded>
+      
+      <comments>http://youngzy.com/essays/2016/01/02/will-energy-be-exhausted/#disqus_thread</comments>
+    </item>
+    
+    <item>
+      <title>开篇</title>
+      <link>http://youngzy.com/essays/2016/01/01/first-post/</link>
+      <guid>http://youngzy.com/essays/2016/01/01/first-post/</guid>
+      <pubDate>Fri, 01 Jan 2016 09:46:39 GMT</pubDate>
+      <description>
+      
+        
+        
+          &lt;p&gt;终于有自己的个人博客了。是真真正正属于自己的博客。&lt;/p&gt;
+&lt;h1 id=&quot;u4E3A_u4EC0_u4E48_u8981_u6709_u4E2A_u535A_u5BA2_uFF1F&quot;&gt;&lt;a href=&quot;#u4E3A_u4EC0_u4E48_u8981_u6709_u4E2
+        
+      
+      </description>
+      
+      <content:encoded><![CDATA[<p>终于有自己的个人博客了。是真真正正属于自己的博客。</p><h1 id="u4E3A_u4EC0_u4E48_u8981_u6709_u4E2A_u535A_u5BA2_uFF1F"><a href="#u4E3A_u4EC0_u4E48_u8981_u6709_u4E2A_u535A_u5BA2_uFF1F" class="headerlink" title="为什么要有个博客？"></a>为什么要有个博客？</h1><p>之前的博客上说过，<a href="http://www.cnblogs.com/memory4young/p/opening.html" target="_blank" rel="external">《开篇（我想有个家，安稳的家）》</a> 。<br>简单来说，理由如下：</p><ol><li>记录自己的成长（一些经历／想法）<br>和日记还是有区别的。日志比较私人。</li><li>记录遇到问题／解决问题的方法（技术方面的）</li><li>锻炼／提高写作（表达）能力<br><a href="https://medium.com/life-learning/why-keeping-a-daily-journal-could-change-your-life-cc114311afd#.exejzgtjj" target="_blank" rel="external">Why Keeping a Daily Journal Could Change Your Life</a>，这篇文章提到了很多写日志的好处。也有很多不错的建议。看完这篇文章后，我在Day One（一个日记软件）里新建了一个Tag：<strong>Journal</strong> 。准备每天记录自己的生活。哪怕一句话也行。今天是第二天。<br>还有这篇，<a href="https://medium.com/keep-learning-keep-growing/you-will-always-suck-at-what-you-do-until-you-do-this-e0f5e2e08715#.iy4c9bbkj" target="_blank" rel="external">You Will Always Suck at What You Do, Until You Do This</a>，文章里提到很多事情，也许刚开始的时候很难／很丑／很糟／很恶心（sucks）。但总是要开始的，不是吗？<blockquote><p>Just Do It.<br>The Best Time Is NOW.<br>Done Is Better Than Perfect.</p></blockquote></li></ol><p>博客园是我使用的最久的博客，将近3年了。</p><h1 id="u4E3A_u4EC0_u4E48_u8981_u5EFA_u7ACB_u4E00_u4E2A_u72EC_u7ACB_u7684_u535A_u5BA2_u5462_uFF1F"><a href="#u4E3A_u4EC0_u4E48_u8981_u5EFA_u7ACB_u4E00_u4E2A_u72EC_u7ACB_u7684_u535A_u5BA2_u5462_uFF1F" class="headerlink" title="为什么要建立一个独立的博客呢？"></a>为什么要建立一个独立的博客呢？</h1><p>前面提到的那篇链接文章里也提到过：自己的博客不受自己的控制。有点广告吧还可以理解（没有最好）。但是一会儿少篇文章，一会儿图片不见了，这就让人受不了了。</p><p>后来看了李笑来的一篇文章，<a href="https://mp.weixin.qq.com/s?__biz=MzAxNzI4MTMwMw==&amp;mid=401117635&amp;idx=1&amp;sn=38324e5527899032ac2a9f31be83857a&amp;scene=0&amp;key=ac89cba618d2d9766563910bdc9f52e5c4b0239ad11f44008e78afb96378e8bdb21140936ab19bc6f4885e8d702d7939&amp;ascene=1&amp;uin=OTU5Mzk2Njgy&amp;devicetype=iPhone+OS9.2&amp;version=16030811&amp;nettype=3G+&amp;fontScale=100&amp;pass_ticket=NGGOzIVnpBkdIHP6TpVHY8el1qcAjRzYe4fWSirVE2DS07HAf3GUIffwdAy7NM0Z" target="_blank" rel="external">《我在互联网上度过的那两辈子……》</a> 。里面提到要网络实名，也提到了用Github搭建博客。于是我往To-do List里加了一条“Github 博客”。</p><p>还有个原因，有些文字（几十／几百字的）发个博客似乎不太合适。而且有些站点还有限制，例如简书上发读书笔记（收入专题）要求不低于800字。当然也不是强制的，少的也能收（我之前就发过一个少于800字的读书笔记）。但还是觉得不好意思：人家都说不少于800字了，你不够的还往上凑。<br>现在有了自己的博客，哼哼，我想发什么就发什么。<br>我的地盘我做主！！</p><p>周末，以“Github 博客”作为关键字Google了一把。出现最多的就是Github ＋ Hexo。<br>于是开始尝试使用Github ＋ Hexo搭建自己的博客。参考了很多博客／文档（后面会令开一篇），一个周末基本都搞定了。</p><h1 id="u4E3A_u4EC0_u4E48_u5230_u4ECA_u5929_u624D_u53D1_u5462_uFF1F"><a href="#u4E3A_u4EC0_u4E48_u5230_u4ECA_u5929_u624D_u53D1_u5462_uFF1F" class="headerlink" title="为什么到今天才发呢？"></a>为什么到今天才发呢？</h1><p>从注册域名到今天发布博客，间隔差不多十天。<br>Hexo默认的主题，我不是太喜欢。<br>想找一个自己喜欢的主题。<br>直到今天，花了半天的时间，终于弄好了。</p>]]></content:encoded>
+      
+      <comments>http://youngzy.com/essays/2016/01/01/first-post/#disqus_thread</comments>
+    </item>
+    
   </channel>
 </rss>
