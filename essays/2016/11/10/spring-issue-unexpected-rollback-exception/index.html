@@ -1,0 +1,764 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/essays/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/essays/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/essays/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java,Spring," />
+
+
+
+
+
+  <link rel="alternate" href="/essays/rss.xml" title="Young Zhu" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/essays/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="项目中遇到了这样的异常：
+1org.springframework.transaction.UnexpectedRollbackException: Transaction rolled back because it has been marked as rollback-only
+项目概要调用逻辑：12345678910111213// 最外层 Servicepublic class Main">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring | UnexpectedRollbackException 异常（已解决）">
+<meta property="og:url" content="http://youngzy.com/essays/2016/11/10/spring-issue-unexpected-rollback-exception/index.html">
+<meta property="og:site_name" content="Young Zhu">
+<meta property="og:description" content="项目中遇到了这样的异常：
+1org.springframework.transaction.UnexpectedRollbackException: Transaction rolled back because it has been marked as rollback-only
+项目概要调用逻辑：12345678910111213// 最外层 Servicepublic class Main">
+<meta property="og:updated_time" content="2016-11-10T15:24:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring | UnexpectedRollbackException 异常（已解决）">
+<meta name="twitter:description" content="项目中遇到了这样的异常：
+1org.springframework.transaction.UnexpectedRollbackException: Transaction rolled back because it has been marked as rollback-only
+项目概要调用逻辑：12345678910111213// 最外层 Servicepublic class Main">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> Spring | UnexpectedRollbackException 异常（已解决） | Young Zhu </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-73835672-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/essays/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Young Zhu</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Be All You Can Be !</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/essays/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/essays/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/essays/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/essays/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Spring | UnexpectedRollbackException 异常（已解决）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-11-10T22:40:25+08:00" content="2016-11-10">
+              2016-11-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/essays/categories/TECH/" itemprop="url" rel="index">
+                    <span itemprop="name">TECH</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/essays/2016/11/10/spring-issue-unexpected-rollback-exception/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/11/10/spring-issue-unexpected-rollback-exception/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>项目中遇到了这样的异常：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.springframework.transaction.UnexpectedRollbackException: Transaction rolled back because it has been marked as rollback-only</span><br></pre></td></tr></table></figure>
+<h1 id="u9879_u76EE_u6982_u8981"><a href="#u9879_u76EE_u6982_u8981" class="headerlink" title="项目概要"></a>项目概要</h1><h2 id="u8C03_u7528_u903B_u8F91_uFF1A"><a href="#u8C03_u7528_u903B_u8F91_uFF1A" class="headerlink" title="调用逻辑："></a>调用逻辑：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 最外层 Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainService</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">executeAAA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			...</span><br><span class="line">			nestedService.executeBBB();</span><br><span class="line">			...</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// 更新操作日志表</span></span><br><span class="line">			updateTblOperationLog(e);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">pulblic <span class="class"><span class="keyword">class</span> <span class="title">NestedService</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">executeBBB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			...</span><br><span class="line">			nestedNestedService.sendMsg();</span><br><span class="line">			...</span><br><span class="line">		</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="function"><span class="keyword">throws</span> new <span class="title">BusinessException</span><span class="params">(e)</span></span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">pulblic <span class="class"><span class="keyword">class</span> <span class="title">NestedNestedService</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendMsg</span><span class="params">()</span> <span class="keyword">throws</span> BusinessException </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			...</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="function"><span class="keyword">throws</span> new <span class="title">BusinessException</span><span class="params">(e)</span></span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="u4E8B_u52A1_u914D_u7F6E"><a href="#u4E8B_u52A1_u914D_u7F6E" class="headerlink" title="事务配置"></a>事务配置</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">aop:config</span> <span class="attribute">proxy-target-class</span>=<span class="value">"true"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">aop:pointcut</span> <span class="attribute">id</span>=<span class="value">"servicePointcut"</span> </span><br><span class="line">		<span class="attribute">expression</span>=<span class="value">"execution(* com.XXX..*service..*(..))"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">aop:advisor</span> <span class="attribute">pointcut-ref</span>=<span class="value">"servicePointcut"</span> <span class="attribute">advice-ref</span>=<span class="value">"txAdvice"</span> <span class="attribute">order</span>=<span class="value">"1"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">aop:config</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">tx:annotation-driven</span> <span class="attribute">transaction-manager</span> = "<span class="attribute">transactionManager</span>" /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">tx:advice</span> <span class="attribute">id</span>=<span class="value">"txAdvice"</span> <span class="attribute">transaction-manager</span>=<span class="value">"transactionManager"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">tx:attributes</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">tx:method</span> <span class="attribute">name</span>=<span class="value">"save*"</span> <span class="attribute">propagation</span>=<span class="value">"REQUIRED"</span> <span class="attribute">rollback-for</span>=<span class="value">"BusinessException"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">tx:method</span> <span class="attribute">name</span>=<span class="value">"add*"</span> <span class="attribute">propagation</span>=<span class="value">"REQUIRED"</span> <span class="attribute">rollback-for</span>=<span class="value">"BusinessException"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">tx:method</span> <span class="attribute">name</span>=<span class="value">"insert*"</span> <span class="attribute">propagation</span>=<span class="value">"REQUIRED"</span> <span class="attribute">rollback-for</span>=<span class="value">"BusinessException"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">tx:method</span> <span class="attribute">name</span>=<span class="value">"update*"</span> <span class="attribute">propagation</span>=<span class="value">"REQUIRED"</span> <span class="attribute">rollback-for</span>=<span class="value">"BusinessException"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">tx:method</span> <span class="attribute">name</span>=<span class="value">"delete*"</span> <span class="attribute">propagation</span>=<span class="value">"REQUIRED"</span> <span class="attribute">rollback-for</span>=<span class="value">"BusinessException"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">tx:method</span> <span class="attribute">name</span>=<span class="value">"validate*"</span> <span class="attribute">propagation</span>=<span class="value">"REQUIRED"</span> <span class="attribute">rollback-for</span>=<span class="value">"BusinessException"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">tx:method</span> <span class="attribute">name</span>=<span class="value">"calculate*"</span> <span class="attribute">propagation</span>=<span class="value">"REQUIRED"</span> <span class="attribute">rollback-for</span>=<span class="value">"BusinessException"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">tx:method</span> <span class="attribute">name</span>=<span class="value">"execute*"</span> <span class="attribute">propagation</span>=<span class="value">"REQUIRED"</span> <span class="attribute">rollback-for</span>=<span class="value">"BusinessException"</span>/&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">tx:method</span> <span class="attribute">name</span>=<span class="value">"find*"</span> <span class="attribute">read-only</span>=<span class="value">"true"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">tx:method</span> <span class="attribute">name</span>=<span class="value">"get*"</span> <span class="attribute">read-only</span>=<span class="value">"true"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">tx:method</span> <span class="attribute">name</span>=<span class="value">"load*"</span> <span class="attribute">read-only</span>=<span class="value">"true"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="title">tx:method</span> <span class="attribute">name</span>=<span class="value">"*"</span> <span class="attribute">read-only</span>=<span class="value">"true"</span>/&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">tx:attributes</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">tx:advice</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>出现这种没碰过的问题，第一反应当然就是 Google 了。<br>翻了很多 Blog 和 论坛，也尝试了很多办法，但都失败了。</p>
+<h1 id="u5C1D_u8BD5"><a href="#u5C1D_u8BD5" class="headerlink" title="尝试"></a>尝试</h1><p>原因已经找到：通过查看日志，知道问题是出现在调用 <code>nestedNestedService.sendMsg()</code> 时。由于对方服务不通，导致这个方法出现异常。</p>
+<h2 id="u5C1D_u8BD51"><a href="#u5C1D_u8BD51" class="headerlink" title="尝试1"></a>尝试1</h2><p>总的来说就是事务嵌套的问题。网上说可以为每一个方法都起一个事务，修改事务配置文件：</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;tx:<span class="keyword">method</span> name=<span class="string">"execute*"</span> propagation=<span class="string">"REQUIRED"</span> rollback-<span class="keyword">for</span>=<span class="string">"BusinessException"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<p>改为<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;tx:<span class="keyword">method</span> name=<span class="string">"execute*"</span> propagation=<span class="string">"REQUIRES_NEW"</span> rollback-<span class="keyword">for</span>=<span class="string">"BusinessException"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这个不行，还是会报一样的错误。</p>
+<h2 id="u5C1D_u8BD52"><a href="#u5C1D_u8BD52" class="headerlink" title="尝试2"></a>尝试2</h2><p>考虑到出错的那个方法 <code>sendMsg()</code> 不在事务的预定义里面，属于 <code>*</code> 的范畴。<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;tx:<span class="keyword">method</span> name=<span class="string">"*"</span> read-only=<span class="string">"true"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>改成开启独立事务的模式（挂起前一个，当前方法新起一个事务）：</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;tx:<span class="keyword">method</span> name=<span class="string">"*"</span> propagation=<span class="string">"REQUIRES_NEW"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<p>不行。</p>
+<p>改成不用事务的，因为该用事务的前面定义的差不多了：<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;tx:<span class="keyword">method</span> name=<span class="string">"*"</span> propagation=<span class="string">"NOT_SUPPORTED"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>还是不行。报错说“事务是必须的”……</p>
+<p>那就改成 <code>SUPPORTS</code> 的吧，意思是有事务就用，没有也没关系</p>
+<figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;tx:<span class="keyword">method</span> name=<span class="string">"*"</span> propagation=<span class="string">"SUPPORTS"</span>/&gt;</span><br></pre></td></tr></table></figure>
+<p>还是不行。跟一开始一样的错。</p>
+<p><code>*</code> 不行，那就专门给以 <strong>send</strong> 开头的方法设置一个。<br>跟上面一样，尝试了 <code>REQUIRES_NEW</code>， <code>NOT_SUPPORTED</code> ，都以失败告终。</p>
+<h1 id="u89E3_u51B3_u529E_u6CD5"><a href="#u89E3_u51B3_u529E_u6CD5" class="headerlink" title="解决办法"></a>解决办法</h1><p>修改配置不行。那就只能从代码入手了。<br>看了这么多资料，做了这么多尝试，问题点差不多找到了：方法 <code>nestedService.executeBBB()</code> 抛出了 <strong>BusinessException </strong> 异常导致的。即使最外层的 Service 的 <code>mainService.executeAAA()</code> 做了 try-catch 也不行。</p>
+<p>由于项目中的 Service 类里有很多 <code>execute</code> 开头的方法，所以不能随意的更改 <code>rollback-for</code> 配置。<br>事务里定义了如果遇到 <code>BusinessException</code> 就回滚。<br>怎样让它不回滚呢？<br><strong>那就新增一个异常类吧。</strong></p>
+<ol>
+<li><p>新增异常类：</p>
+ <figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">ServiceException</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Exception</span> &#123;</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 NestedNestedService 类</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pulblic <span class="class"><span class="keyword">class</span> <span class="title">NestedNestedService</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sendMsg</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			...</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">//throws new BusinessException(e);</span></span><br><span class="line">			<span class="comment">// 直接 throw ，就不再封装了</span></span><br><span class="line">			<span class="keyword">throws</span> e;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 NestedService 类</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">pulblic <span class="class"><span class="keyword">class</span> <span class="title">NestedService</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">executeBBB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			...</span><br><span class="line">			nestedNestedService.sendMsg();</span><br><span class="line">			...</span><br><span class="line">		</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="comment">// throws new BusinessException(e);</span></span><br><span class="line">			</span><br><span class="line">			<span class="comment">// 换成 ServiceException 异常</span></span><br><span class="line">			<span class="function"><span class="keyword">throws</span> new <span class="title">ServiceException</span><span class="params">(e)</span></span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>其实之前都是抱着试试看的态度。<br>问题就这样解决了。</p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/essays/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/essays/tags/Spring/" rel="tag">#Spring</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/essays/2016/09/10/amazing-algorithm-01-recursion/" rel="next" title="神奇的递归">
+                <i class="fa fa-chevron-left"></i> 神奇的递归
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/essays/2016/11/13/how-time-flies/" rel="prev" title="当“时光飞逝”如此形象直观">
+                当“时光飞逝”如此形象直观 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="http://s.gravatar.com/avatar/1a90471b5cb2d6406d371cb7aa46c901?s=80" alt="youngzy" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">youngzy</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Be All You Can Be !</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/essays/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/essays/categories">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/essays/tags">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/essays/rss.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/youngzhu/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/memory4young/" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> CNBlogs
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u9879_u76EE_u6982_u8981"><span class="nav-number">1.</span> <span class="nav-text">项目概要</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u8C03_u7528_u903B_u8F91_uFF1A"><span class="nav-number">1.1.</span> <span class="nav-text">调用逻辑：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u4E8B_u52A1_u914D_u7F6E"><span class="nav-number">1.2.</span> <span class="nav-text">事务配置</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5C1D_u8BD5"><span class="nav-number">2.</span> <span class="nav-text">尝试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5C1D_u8BD51"><span class="nav-number">2.1.</span> <span class="nav-text">尝试1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5C1D_u8BD52"><span class="nav-number">2.2.</span> <span class="nav-text">尝试2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u89E3_u51B3_u529E_u6CD5"><span class="nav-number">3.</span> <span class="nav-text">解决办法</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">youngzy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/essays/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'youngzy';
+      var disqus_identifier = '2016/11/10/spring-issue-unexpected-rollback-exception/';
+      var disqus_title = 'Spring | UnexpectedRollbackException 异常（已解决）';
+      var disqus_url = 'http://youngzy.com/essays/2016/11/10/spring-issue-unexpected-rollback-exception/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/essays/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/essays/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/essays/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/essays/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/essays/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/essays/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/essays/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/essays/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/essays/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/essays/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>

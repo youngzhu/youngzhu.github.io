@@ -1,0 +1,763 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/essays/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/essays/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/essays/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java,thread," />
+
+
+
+
+
+  <link rel="alternate" href="/essays/rss.xml" title="Young Zhu" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/essays/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="什么情况下需要关注线程安全问题？就是多个线程会对某个变量同时执行读／写操作的时候。
+问题举个常用但没太注意过的例子 —— SimpleDateFormat 类。这个类是JDK里面封装的，用来对日期进行格式化。提供 parse(String dateStr), format(Date date) 等方法。
+
+注：上面提到的方法都在其父类 DateFormat 中。
+
+翻开源代码就会发现，它有一个实体">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多线程与线程安全（实例讲解）">
+<meta property="og:url" content="http://youngzy.com/essays/2016/11/27/multi-thread-and-thread-safe/index.html">
+<meta property="og:site_name" content="Young Zhu">
+<meta property="og:description" content="什么情况下需要关注线程安全问题？就是多个线程会对某个变量同时执行读／写操作的时候。
+问题举个常用但没太注意过的例子 —— SimpleDateFormat 类。这个类是JDK里面封装的，用来对日期进行格式化。提供 parse(String dateStr), format(Date date) 等方法。
+
+注：上面提到的方法都在其父类 DateFormat 中。
+
+翻开源代码就会发现，它有一个实体">
+<meta property="og:image" content="http://7xqxq2.com1.z0.glb.clouddn.com/201611/thread.png">
+<meta property="og:updated_time" content="2016-11-27T07:42:57.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="多线程与线程安全（实例讲解）">
+<meta name="twitter:description" content="什么情况下需要关注线程安全问题？就是多个线程会对某个变量同时执行读／写操作的时候。
+问题举个常用但没太注意过的例子 —— SimpleDateFormat 类。这个类是JDK里面封装的，用来对日期进行格式化。提供 parse(String dateStr), format(Date date) 等方法。
+
+注：上面提到的方法都在其父类 DateFormat 中。
+
+翻开源代码就会发现，它有一个实体">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> 多线程与线程安全（实例讲解） | Young Zhu </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-73835672-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/essays/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Young Zhu</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Be All You Can Be !</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/essays/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/essays/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/essays/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/essays/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                多线程与线程安全（实例讲解）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-11-27T11:58:15+08:00" content="2016-11-27">
+              2016-11-27
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/essays/categories/TECH/" itemprop="url" rel="index">
+                    <span itemprop="name">TECH</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/essays/2016/11/27/multi-thread-and-thread-safe/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/11/27/multi-thread-and-thread-safe/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>什么情况下需要关注线程安全问题？<br>就是多个线程会对某个变量同时执行读／写操作的时候。</p>
+<h1 id="u95EE_u9898"><a href="#u95EE_u9898" class="headerlink" title="问题"></a>问题</h1><p>举个常用但没太注意过的例子 —— <strong>SimpleDateFormat</strong> 类。<br>这个类是JDK里面封装的，用来对日期进行格式化。提供 <code>parse(String dateStr)</code>, <code>format(Date date)</code> 等方法。</p>
+<blockquote>
+<p>注：上面提到的方法都在其父类 DateFormat 中。</p>
+</blockquote>
+<p>翻开源代码就会发现，它有一个实体变量 <code>calendar</code> （也是在父类 DateFormat 中）。上面提到的 parse 、format 等方法会对这个变量执行 clear() 、set…(…) 等操作（具体操作请查看源代码）。</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">DateFormat</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Format</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * The &#123;@link Calendar&#125; instance used for calculating the date-time fields</span><br><span class="line">     * and the instant of time. This field is used for both formatting and</span><br><span class="line">     * parsing.</span><br><span class="line">     *</span><br><span class="line">     * &lt;p&gt;Subclasses should initialize this field to a &#123;@link Calendar&#125;</span><br><span class="line">     * appropriate for the &#123;@link Locale&#125; associated with this</span><br><span class="line">     * &lt;code&gt;DateFormat&lt;/code&gt;.</span><br><span class="line">     * @serial</span><br><span class="line">     */</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="type">Calendar</span> calendar;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样，如果有一个类型为 SimpleDateFormat 的公共变量，就要小心了，这个变量不是线程安全的，多个线程间的数据可能会串了…几乎是一定会串。</p>
+<p>例如，有这样一个日期的工具类，就是将日期转换成特定的字符串格式。</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * </span><br><span class="line"> *</span><br><span class="line"> * @author by youngz</span><br><span class="line"> *      on 2016年11月27日</span><br><span class="line"> *</span><br><span class="line"> * Package&amp;FileName: org.young.thread.DateUtil</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DateUtil</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> String PATTERN_YMD = <span class="string">"yyyy-MM-dd"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> SimpleDateFormat formatter = <span class="keyword">new</span> SimpleDateFormat();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String getFormattedDate(Date <span class="keyword">date</span>) &#123;</span><br><span class="line">		formatter.applyPattern(PATTERN_YMD);</span><br><span class="line">		<span class="keyword">return</span> formatter.format(<span class="keyword">date</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是测试类：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 测试类</span><br><span class="line"> *</span><br><span class="line"> * @author by youngz</span><br><span class="line"> *      on 2016年11月27日</span><br><span class="line"> *</span><br><span class="line"> * Package&amp;FileName: org.young.thread.Main</span><br><span class="line"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> Main &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">void</span> main(<span class="built_in">String</span>[] args) &#123;</span><br><span class="line">		<span class="comment">// 昨天的日期</span></span><br><span class="line">		Calendar calYesterday = Calendar.getInstance();</span><br><span class="line">		calYesterday.setTime(<span class="keyword">new</span> <span class="built_in">Date</span>());</span><br><span class="line">		calYesterday.add(Calendar.DAY_OF_MONTH, -<span class="number">1</span>);</span><br><span class="line">		ShowDate yesterday = <span class="keyword">new</span> ShowDate(<span class="string">"YESTERDAY"</span>, calYesterday.getTime());</span><br><span class="line">		</span><br><span class="line">		<span class="comment">// 今天的日期</span></span><br><span class="line">		ShowDate today = <span class="keyword">new</span> ShowDate(<span class="string">"TODAY"</span>, <span class="keyword">new</span> <span class="built_in">Date</span>());</span><br><span class="line">		</span><br><span class="line">		Thread t1 = <span class="keyword">new</span> Thread(yesterday);</span><br><span class="line">		Thread t2 = <span class="keyword">new</span> Thread(today);</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/*</span><br><span class="line">		 * start() </span><br><span class="line">		 * 		它的作用是启动一个新线程，新线程会执行相应的run()方法。start()不能被重复调用。</span><br><span class="line">		 * run() </span><br><span class="line">		 * 		就和普通的成员方法一样，可以被重复调用。单独调用s的话，会在当前线程中执行run()，而并不会启动新线程！</span><br><span class="line">		 */</span></span><br><span class="line">		t1.start();</span><br><span class="line">		t2.start();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还有一个线程类：<br><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 一个简单的线程的实现类</span><br><span class="line"> *</span><br><span class="line"> * @author by youngz</span><br><span class="line"> *      on 2016年11月27日</span><br><span class="line"> *</span><br><span class="line"> * Package&amp;FileName: org.young.thread.ShowDate</span><br><span class="line"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShowDate</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> String <span class="keyword">desc</span>;</span><br><span class="line">	<span class="keyword">private</span> Date <span class="keyword">date</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> ShowDate(String <span class="keyword">desc</span>, Date <span class="keyword">date</span>) &#123;</span><br><span class="line">		<span class="keyword">this</span>.<span class="keyword">desc</span> = <span class="keyword">desc</span>;</span><br><span class="line">		<span class="keyword">this</span>.<span class="keyword">date</span> = <span class="keyword">date</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	@Override</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> run() &#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000</span>; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (i % <span class="number">30</span> == <span class="number">0</span>) &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					Thread.sleep(<span class="number">500</span>L);</span><br><span class="line">				&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">					e.printStackTrace();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(<span class="keyword">desc</span> + <span class="string">": "</span> + DateUtil.getFormattedDate(<span class="keyword">date</span>));</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>按照设想，以今天（2016-11-27）为例，应该是 <strong>YESTERDAY: 2016-11-26</strong> 和 <strong>TODAY: 2016-11-27</strong> 这两个字符串交叉着，各自打印 1000 遍。<br>可事实是这样吗？<br>运行一下看看。<br><img src="http://7xqxq2.com1.z0.glb.clouddn.com/201611/thread.png" alt="截图" title="测试类运行结果截图"><br>结果简直惨不忍睹，第一行就出错了（当然，这个可能需要一定的“运气”）。“今天”一会儿 26，一会儿 27。“昨天”也一样，一会儿 26，一会儿 27。<br>这就是线程不安全导致的问题了。<br>该怎么解决呢？?</p>
+<h1 id="u89E3_u51B3_u529E_u6CD5_uFF08_u4E00_uFF09__u2014_u2014_synchronized"><a href="#u89E3_u51B3_u529E_u6CD5_uFF08_u4E00_uFF09__u2014_u2014_synchronized" class="headerlink" title="解决办法（一） —— synchronized"></a>解决办法（一） —— synchronized</h1><p>比较容易想到的就是这个关键字了：<strong>synchronized</strong> 。在学校就是这么学的。</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 进化的 DateUtil</span><br><span class="line"> * 使用同步块，synchronized</span><br><span class="line"> *</span><br><span class="line"> * <span class="doctag">@author</span> by youngz</span><br><span class="line"> *      on 2016年11月27日</span><br><span class="line"> *</span><br><span class="line"> * Package&amp;FileName: org.young.thread.SyncDateUtil</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SyncDateUtil</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> String PATTERN_YMD = <span class="string">"yyyy-MM-dd"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> SimpleDateFormat formatter = <span class="keyword">new</span> SimpleDateFormat();</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="function">String <span class="title">getFormattedDate</span><span class="params">(Date date)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">synchronized</span>(formatter) &#123;</span><br><span class="line">			</span><br><span class="line">			formatter.applyPattern(PATTERN_YMD);</span><br><span class="line">			<span class="function"><span class="keyword">return</span> formatter.<span class="title">format</span><span class="params">(date)</span></span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>只要把线程类 —— ShowDate 的第 30 行的工具类替换一下就行，<em>DateUtil</em> 换成 <em>SyncDateUtil</em> ，即：</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//	System.out.println(desc + ": " + DateUtil.getFormattedDate(date));</span></span><br><span class="line">	System.out.println(<span class="keyword">desc</span> + <span class="string">": "</span> + SyncDateUtil.getFormattedDate(<span class="keyword">date</span>));</span><br></pre></td></tr></table></figure>
+<p>在运行试试！<br>不管执行多少遍，都不会出现前面说的串数据的问题了。</p>
+<h1 id="u89E3_u51B3_u529E_u6CD5_uFF08_u4E8C_uFF09__u2014_u2014_ThreadLocal"><a href="#u89E3_u51B3_u529E_u6CD5_uFF08_u4E8C_uFF09__u2014_u2014_ThreadLocal" class="headerlink" title="解决办法（二） —— ThreadLocal"></a>解决办法（二） —— ThreadLocal</h1><p>除了 <strong>synchronized</strong> 还有 <strong>ThreadLocal</strong> 。</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 进化的 DateUtil —— ThreadLocal</span><br><span class="line"> *</span><br><span class="line"> * @author by youngz</span><br><span class="line"> *      on 2016年11月27日</span><br><span class="line"> *</span><br><span class="line"> * Package&amp;FileName: org.young.thread.ThreadLocalDateUtil</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadLocalDateUtil</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> String PATTERN_YMD = <span class="string">"yyyy-MM-dd"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> ThreadLocal&lt;DateFormat&gt; formatter = <span class="keyword">new</span> ThreadLocal&lt;DateFormat&gt;() &#123;</span><br><span class="line">		<span class="keyword">protected</span> DateFormat initialValue() &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> SimpleDateFormat(PATTERN_YMD);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> String getFormattedDate(Date <span class="keyword">date</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> formatter.get().format(<span class="keyword">date</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>ThreadLocal</strong> 还有另一种实现。</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 进化的 DateUtil —— ThreadLocal 的另一种实现</span><br><span class="line"> *</span><br><span class="line"> * @author by youngz</span><br><span class="line"> *      on 2016年11月27日</span><br><span class="line"> *</span><br><span class="line"> * Package&amp;FileName: org.young.thread.ThreadLocalDateUtil2</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">ThreadLocalDateUtil2</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> final <span class="keyword">static</span> String PATTERN_YMD = <span class="string">"yyyy-MM-dd"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> ThreadLocal&lt;DateFormat&gt; formatter = <span class="keyword">new</span> ThreadLocal&lt;DateFormat&gt;();</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> DateFormat <span class="title">getDateFormat</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		DateFormat df = formatter.<span class="keyword">get</span>();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span> (<span class="keyword">null</span> == df) &#123;</span><br><span class="line">			df = <span class="keyword">new</span> SimpleDateFormat(PATTERN_YMD);</span><br><span class="line">			formatter.<span class="keyword">set</span>(df);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> df;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getFormattedDate</span>(<span class="params">Date date</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> getDateFormat().format(date);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>详细代码可参照 <a href="https://github.com/youngzhu/CollectionCode4Java/tree/master/src/org/young/thread" target="_blank" rel="external">https://github.com/youngzhu/CollectionCode4Java/tree/master/src/org/young/thread</a></p>
+<p>参考：<br><a href="http://www.cnblogs.com/doit8791/p/4093808.html" target="_blank" rel="external">http://www.cnblogs.com/doit8791/p/4093808.html</a></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/essays/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/essays/tags/thread/" rel="tag">#thread</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/essays/2016/11/13/how-time-flies/" rel="next" title="当“时光飞逝”如此形象直观">
+                <i class="fa fa-chevron-left"></i> 当“时光飞逝”如此形象直观
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/essays/2016/12/11/how-to-get-param-in-static-html-page/" rel="prev" title="HTML静态页面如何传递／获取参数？（已解决）">
+                HTML静态页面如何传递／获取参数？（已解决） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </div>
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="http://s.gravatar.com/avatar/1a90471b5cb2d6406d371cb7aa46c901?s=80" alt="youngzy" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">youngzy</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Be All You Can Be !</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/essays/archives">
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/essays/categories">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/essays/tags">
+              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/essays/rss.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/youngzhu/" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/memory4young/" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> CNBlogs
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#u95EE_u9898"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u89E3_u51B3_u529E_u6CD5_uFF08_u4E00_uFF09__u2014_u2014_synchronized"><span class="nav-number">2.</span> <span class="nav-text">解决办法（一） —— synchronized</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u89E3_u51B3_u529E_u6CD5_uFF08_u4E8C_uFF09__u2014_u2014_ThreadLocal"><span class="nav-number">3.</span> <span class="nav-text">解决办法（二） —— ThreadLocal</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">youngzy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/essays/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'youngzy';
+      var disqus_identifier = '2016/11/27/multi-thread-and-thread-safe/';
+      var disqus_title = '多线程与线程安全（实例讲解）';
+      var disqus_url = 'http://youngzy.com/essays/2016/11/27/multi-thread-and-thread-safe/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/essays/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/essays/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/essays/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/essays/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/essays/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/essays/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/essays/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/essays/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/essays/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/essays/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>
